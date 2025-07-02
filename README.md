@@ -1,2 +1,1 @@
-# Project Deployed Successfull...
-Site Link : https://shindemaheshportfolio.netlify.app/
+# Deployed : https://shindemaheshportfolio.netlify.app
