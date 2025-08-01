@@ -1,306 +1,530 @@
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
+/* Achievements Section */
+.coding-achievements_section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 6rem 0;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
 
-        .coding-achievements_section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            position: relative;
-            overflow: hidden;
-        }
+/* Background Animation */
+.coding-achievements_section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(94, 59, 238, 0.03) 0%, rgba(0, 198, 255, 0.03) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
 
-        .coding-achievements_section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            pointer-events: none;
-        }
+/* Grid Pattern Background */
+.coding-achievements_section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(94, 59, 238, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 59, 238, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: 0;
+  pointer-events: none;
+}
 
-        .page-padding {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
+/* Section Title */
+.coding-achievements_title {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 1;
+}
 
-        .project_section_title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+.small-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
 
-        .small-title {
-            color: #667eea;
-            font-size: 16px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
+.large-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
 
-        .coding-achievements_title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            position: relative;
-        }
+.large-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+}
 
-        /* Platform Logos */
-        .coding-achievements_logos {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 60px;
-            flex-wrap: wrap;
-        }
+/* Platform Logos */
+.coding-achievements_logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 1;
+}
 
-        .coding-achievements_logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            background: white;
-            padding: 10px;
-        }
+.coding-achievements_logo {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+}
 
-        .coding-achievements_logo:hover {
-            transform: translateY(-10px) scale(1.1);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
+/* Glow Effect */
+.coding-achievements_logo::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-color), transparent, var(--accent-color), transparent);
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  transition: var(--transition-medium);
+  border-radius: 20px;
+}
 
-        /* Main Container */
-        .coding-achievements_container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            padding: 50px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
+.coding-achievements_logo:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(94, 59, 238, 0.2);
+  border-color: rgba(94, 59, 238, 0.2);
+}
 
-        .coding-achievements_info h1 {
-            font-size: 2.5rem;
-            color: #2d3748;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+.coding-achievements_logo:hover::before {
+  opacity: 0.7;
+  animation: glowing 20s linear infinite;
+}
 
-        .coding-achievements_info p {
-            font-size: 1.2rem;
-            color: #4a5568;
-            line-height: 1.8;
-            text-align: center;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
 
-        /* Badges */
-        .coding-achievements_badges {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
+.coding-achievements_logo img {
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+  transition: var(--transition-medium);
+}
 
-        .coding-achievements_badge {
-            width: 120px;
-            height: auto;
-            border-radius: 15px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
+.coding-achievements_logo:hover img {
+  transform: scale(1.1);
+}
 
-        .coding-achievements_badge:hover {
-            transform: scale(1.05);
-        }
+/* Main Container */
+.coding-achievements_container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
 
-        /* GitHub Analytics */
-        .github-analytics {
-            text-align: center;
-            margin: 40px 0;
-        }
+/* Achievement Info */
+.coding-achievements_info {
+  text-align: center;
+  margin-bottom: 4rem;
+}
 
-        .github-analytics h2 {
-            font-size: 2rem;
-            color: #2d3748;
-            margin-bottom: 30px;
-            position: relative;
-        }
+.coding-achievements_info p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-        .github-analytics h2::before {
-            content: '⚡';
-            margin-right: 10px;
-            font-size: 1.5em;
-        }
+/* Badges Section */
+.coding-achievements_badges {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
 
-        .github-stats {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
+.coding-achievements_badge {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  transition: var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-        .github-stats img {
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            max-width: 100%;
-            height: auto;
-        }
+/* Glow Effect */
+.coding-achievements_badge::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-color), transparent, var(--accent-color), transparent);
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  transition: var(--transition-medium);
+  border-radius: 20px;
+}
 
-        .github-stats img:hover {
-            transform: translateY(-5px);
-        }
+.coding-achievements_badge:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(94, 59, 238, 0.2);
+  border-color: rgba(94, 59, 238, 0.2);
+}
 
-        /* LeetCode Stats */
-        .leetcode-stats {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 30px 0;
-        }
+.coding-achievements_badge:hover::before {
+  opacity: 0.7;
+  animation: glowing 20s linear infinite;
+}
 
-        .leetcode-stats img {
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            max-width: 100%;
-            height: auto;
-        }
+.badge-img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 1.5rem;
+  transition: var(--transition-medium);
+}
 
-        .leetcode-stats img:hover {
-            transform: translateY(-5px);
-        }
+.coding-achievements_badge:hover .badge-img {
+  transform: scale(1.1) rotate(5deg);
+}
 
-        /* Certifications */
-        .coding-achievements_certifications {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 20px;
-            padding: 40px;
-            margin-top: 40px;
-            color: white;
-        }
+.badge-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
 
-        .coding-achievements_certifications h1 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 30px;
-            color: white;
-        }
+.badge-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
 
-        .coding-achievements_certifications ul {
-            list-style: none;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+/* GitHub Analytics */
+.github-analytics {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 4rem;
+  transition: var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+}
 
-        .coding-achievements_certifications li {
-            background: rgba(255,255,255,0.1);
-            margin: 15px 0;
-            padding: 20px;
-            border-radius: 15px;
-            border-left: 4px solid #fff;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
+/* Glow Effect */
+.github-analytics::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-color), transparent, var(--accent-color), transparent);
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  transition: var(--transition-medium);
+  border-radius: 20px;
+}
 
-        .coding-achievements_certifications li:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateX(10px);
-        }
+.github-analytics:hover::before {
+  opacity: 0.7;
+  animation: glowing 20s linear infinite;
+}
 
-        .coding-achievements_certifications a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            display: block;
-            transition: color 0.3s ease;
-        }
+.github-analytics-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
 
-        .coding-achievements_certifications a:hover {
-            color: #ffd700;
-        }
+.github-analytics-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+}
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .coding-achievements_title {
-                font-size: 2.5rem;
-            }
+.github-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
 
-            .coding-achievements_container {
-                padding: 30px 20px;
-                margin: 0 10px;
-            }
+.github-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  transition: var(--transition-medium);
+}
 
-            .coding-achievements_logos {
-                gap: 20px;
-            }
+.github-stat:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 
-            .coding-achievements_logo {
-                width: 60px;
-                height: 60px;
-            }
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
 
-            .github-stats {
-                flex-direction: column;
-                align-items: center;
-            }
+.stat-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
 
-            .leetcode-stats {
-                flex-direction: column;
-                align-items: center;
-            }
+/* LeetCode Stats */
+.leetcode-stats {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  transition: var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
 
-            .coding-achievements_certifications {
-                padding: 30px 20px;
-            }
-        }
+/* Glow Effect */
+.leetcode-stats::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-color), transparent, var(--accent-color), transparent);
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  transition: var(--transition-medium);
+  border-radius: 20px;
+}
 
-        /* Animation for stats images */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
+.leetcode-stats:hover::before {
+  opacity: 0.7;
+  animation: glowing 20s linear infinite;
+}
 
-        .stats-gif {
-            animation: float 2s ease-in-out infinite;
-        }
+.leetcode-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  transition: var(--transition-medium);
+}
 
-        /* Pulse animation for badges */
-        @keyframes pulse {
-            0% { box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-            50% { box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); }
-            100% { box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        }
+.leetcode-stat:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 
-        .coding-achievements_badge {
-            animation: pulse 3s ease-in-out infinite;
-        }
+.leetcode-stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.leetcode-stat-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .large-title {
+    font-size: 2.2rem;
+  }
+  
+  .coding-achievements_logo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .badge-img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .coding-achievements_section {
+    padding: 4rem 0;
+  }
+  
+  .coding-achievements_title {
+    margin-bottom: 3rem;
+  }
+  
+  .large-title {
+    font-size: 2rem;
+  }
+  
+  .small-title {
+    font-size: 1rem;
+  }
+  
+  .coding-achievements_logos {
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .coding-achievements_logo {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .coding-achievements_info p {
+    font-size: 1rem;
+  }
+  
+  .github-analytics-title,
+  .leetcode-stats-title {
+    font-size: 1.3rem;
+  }
+  
+  .stat-number,
+  .leetcode-stat-number {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .coding-achievements_section {
+    padding: 3rem 0;
+  }
+  
+  .large-title {
+    font-size: 1.8rem;
+  }
+  
+  .coding-achievements_logos {
+    gap: 1.5rem;
+  }
+  
+  .coding-achievements_logo {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .badge-img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .badge-title {
+    font-size: 1.1rem;
+  }
+  
+  .badge-description {
+    font-size: 0.8rem;
+  }
+  
+  .github-analytics,
+  .leetcode-stats {
+    padding: 1.5rem;
+  }
+  
+  .stat-number,
+  .leetcode-stat-number {
+    font-size: 1.8rem;
+  }
+  
+  .stat-label,
+  .leetcode-stat-label {
+    font-size: 0.9rem;
+  }
+}

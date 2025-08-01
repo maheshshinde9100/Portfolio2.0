@@ -2,32 +2,40 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mahesh's Portfolio</title>
-  <!-- poppins font -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mahesh Shinde - Full-Stack Developer, Android Developer, and Java Developer Portfolio">
+  <meta name="keywords" content="Mahesh Shinde, portfolio, full-stack, developer, android, java, web development">
+  <meta name="author" content="Mahesh Shinde">
+  <title>Mahesh Shinde | Portfolio</title>
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-
+  
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0svlQCPdbz9juicuXnYSfYPjWxXv-zYhQQVWqnzSIZPahi5EYXJjMUzEGStcD4x" crossorigin="anonymous">
+  
+  <!-- Icons -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,200,0,0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <link rel="stylesheet" href="home.css" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="project.css" />
-  <link rel="stylesheet" href="navbar.css" />
-  <link rel="stylesheet" href="skill.css" />
-  <link rel="stylesheet" href="experience.css" />
-  <link rel="stylesheet" href="footer.css" />
-  <link rel="stylesheet" href="about.css" />
-  <link rel="stylesheet" href="contact.css" />
-  <link rel="stylesheet" href="achievements.css" />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="skill.css">
+  <link rel="stylesheet" href="project.css">
+  <link rel="stylesheet" href="experience.css">
+  <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="achievements.css">
+  <link rel="stylesheet" href="footer.css">
   <link rel="icon" type="image/png" href="images/ms-logo-for-tab.jpg" />
 </head>
 
@@ -37,9 +45,9 @@
       <nav class="head">
         <div id="navbar-container">
           <!-- <div class="logo"> -->
-          <img class="logo" src="images/ms-logo.png" />
+          <img class="logo" src="images/ms-logo.png" alt="Mahesh Shinde Logo" />
           <!-- </div> -->
-          <div id="navbar-toggler" onclick="myMenu()">
+          <div id="navbar-toggler" onclick="myMenu()" aria-label="Toggle navigation menu">
             <span class="navbar-toggler-btn"></span>
           </div>
           <div id="nav-items">
@@ -48,8 +56,10 @@
               <li><a href="#skill" class="nav-links">Services</a></li>
               <li><a href="#experience" class="nav-links">Experience</a></li>
               <li><a href="#project" class="nav-links">Portfolio</a></li>
+              <li><a href="#coding-achievements" class="nav-links">Achievements</a></li>
+              <li><a href="#about" class="nav-links">About</a></li>
               <li>
-                <a href="https://maheshshinde9100.hackerresume.io/cdbe784f-7325-4ca3-a047-9a2c4ec314cc" id="resume-btn">
+                <a href="https://maheshshinde9100.hackerresume.io/cdbe784f-7325-4ca3-a047-9a2c4ec314cc" id="resume-btn" target="_blank" rel="noopener">
                   <button class="nav-resume-btn" role="button">Resume</button>
                 </a>
               </li>
@@ -64,7 +74,7 @@
       </nav>
     </div>
     <main class="main-wrapper">
-      <!-- @@@@Home -->
+      <!-- Home Section -->
       <header id="home" class="home_page_section">
         <div class="page-padding">
           <div class="container-large">
@@ -72,173 +82,201 @@
               <div class="home_page_container">
                 <div class="home_page_img_container">
                   <div class="home_page_profile_image">
-                    <img class="profile_img" src="images/sticker.png">
+                    <img class="profile_img" src="images/sticker.png" alt="Mahesh Shinde Profile Image">
                     <!-- <img class="profile_img" src="images/anime_img.jpg"> -->
                     <!-- <img class="profile_img" src="images/profile_img.png"> -->
                   </div>
                 </div>
                 <div class="home_page_profile_detail">
-                  <div class="profile_detail">
+                  <div class="profile_detail fade-in">
                     <h2 id="home_sentence">Hello, there</h2>
                     <h2 id="home_sentence">I'm
-                      <span class="text-color-blue">Mahesh Shinde</span>
+                      <span class="text-color-blue gradient-text">Mahesh Shinde</span>
                     </h2>
                     <p id="home_sentence">
                       I'm into
-                      <a href="" class="typewrite" data-period="2000"
+                      <a href="#" class="typewrite" data-period="2000"
                         data-type='["Full-Stack Developer","Android Developer","Java Developer"]'
                         style="color: red; font-weight: bold; text-decoration: none;">
                         <span class="wrap"></span>
                       </a>
-
                     </p>
-                    <a href="#about" style="text-decoration: none;color: white;">
-                      <button class="home-about-button">
-                        About Me
-                      </button>
+                    <a href="#about" class="primary-btn" style="text-decoration: none;color: white;">
+                      <span>About Me</span>
+                      <i class="fa-solid fa-arrow-right"></i>
                     </a>
                     <br>
-                    <div class="home-social-link-container">
+                    <div class="home-social-link-container fade-in">
                       <ul class="home-social-link">
                         <li>
-                          <a href="https://github.com/coder-mahi" target="_blank">
+                          <a href="https://github.com/coder-mahi" target="_blank" rel="noopener" aria-label="GitHub Profile">
                             <img class="social-img" src="https://www.svgrepo.com/show/439171/github.svg"
-                              title="github"></a>
+                              title="github" alt="GitHub Icon"></a>
                         </li>
                         <li>
-                          <a href="https://www.linkedin.com/in/mahesh-shinde-0a666b23b/" target="_blank"><img
-                              class="social-img" src="images/icons/linkedin.png" title="linkedin"></a>
+                          <a href="https://www.linkedin.com/in/mahesh-shinde-0a666b23b/" target="_blank" rel="noopener" aria-label="LinkedIn Profile"><img
+                              class="social-img" src="images/icons/linkedin.png" title="linkedin" alt="LinkedIn Icon"></a>
                         </li>
                         <li>
-                          <a href="https://leetcode.com/u/code-with-mahesh/"><img class="social-img"
-                              src="images/icons/leetcode.png" title="telegram"></a>
+                          <a href="https://leetcode.com/u/code-with-mahesh/" target="_blank" rel="noopener" aria-label="LeetCode Profile"><img class="social-img"
+                              src="images/icons/leetcode.png" title="leetcode" alt="LeetCode Icon"></a>
                         </li>
                         <li>
-                          <a href="https://www.instagram.com/mahi_shinde01/" target="_blank"><img class="social-img"
-                              src="https://www.svgrepo.com/show/452229/instagram-1.svg" title="instagram"></a>
-                          </a>
+                          <a href="https://www.instagram.com/mahi_shinde01/" target="_blank" rel="noopener" aria-label="Instagram Profile"><img class="social-img"
+                              src="https://www.svgrepo.com/show/452229/instagram-1.svg" title="instagram" alt="Instagram Icon"></a>
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
-  </div>
-  </header>
+      </header>
 
-  <!-- @@@Skill -->
+  <!-- Skills Section -->
   <section id="skill" class="skill_section">
     <div class="page-padding">
       <div class="padding-vertical padding-xhuge">
-        <div class="skill_section_title">
+        <div class="skill_section_title fade-in">
           <div class="small-title">Programming Skills</div>
           <div class="large-title">
-            <h2>My Expertise</h2>
+            <h2 class="gradient-text">My Expertise</h2>
           </div>
         </div>
         <div class="skill_container">
           <div class="home-skils_list-wrapper">
             <!-- Skill Box: HTML -->
-            <div class="home-skils_item">
+            <div class="home-skils_item card-hover">
               <div class="skils_item_icon">
                 <img src="https://www.svgrepo.com/show/452228/html-5.svg" alt="HTML Icon">
               </div>
               <div class="skils_item_title">
                 <h3 class="heading-small">HTML</h3>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="width: 95%;"></div>
+                </div>
               </div>
             </div>
             <!-- Skill Box: CSS -->
-            <div class="home-skils_item">
+            <div class="home-skils_item card-hover">
               <div class="skils_item_icon">
                 <img src="https://www.svgrepo.com/show/452185/css-3.svg" alt="CSS Icon">
               </div>
               <div class="skils_item_title">
                 <h3 class="heading-small">CSS</h3>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="width: 90%;"></div>
+                </div>
               </div>
             </div>
             <!-- Skill Box: JavaScript -->
-            <div class="home-skils_item">
+            <div class="home-skils_item card-hover">
               <div class="skils_item_icon">
                 <img src="https://www.svgrepo.com/show/452045/js.svg" alt="JavaScript Icon">
               </div>
               <div class="skils_item_title">
                 <h3 class="heading-small">JavaScript</h3>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="width: 85%;"></div>
+                </div>
               </div>
             </div>
-              <!-- Skill Box: C -->
-              <div class="home-skils_item">
+              <!-- Skill Box: ReactJS -->
+              <div class="home-skils_item card-hover">
                 <div class="skils_item_icon">
-                  <img src="https://www.svgrepo.com/show/355190/reactjs.svg" alt="reactjs Icon">
+                  <img src="https://www.svgrepo.com/show/355190/reactjs.svg" alt="ReactJS Icon">
                 </div>
                 <div class="skils_item_title">
                   <h3 class="heading-small">ReactJS</h3>
+                  <div class="skill-progress">
+                    <div class="progress-bar" style="width: 80%;"></div>
+                  </div>
                 </div>
               </div>
             <!-- Skill Box: Java -->
-            <div class="home-skils_item">
+            <div class="home-skils_item card-hover">
               <div class="skils_item_icon">
                 <img src="https://www.svgrepo.com/show/452234/java.svg" alt="Java Icon">
               </div>
               <div class="skils_item_title">
                 <h3 class="heading-small">Java</h3>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="width: 90%;"></div>
+                </div>
               </div>
             </div>
              <!-- Skill Box: C++ -->
-             <div class="home-skils_item">
+             <div class="home-skils_item card-hover">
               <div class="skils_item_icon">
                 <img src="https://www.svgrepo.com/show/373528/cpp3.svg" alt="C++ Icon">
               </div>
               <div class="skils_item_title">
                 <h3 class="heading-small">C++</h3>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="width: 85%;"></div>
+                </div>
               </div>
             </div>
              <!-- Skill Box: SQL -->
-             <div class="home-skils_item">
+             <div class="home-skils_item card-hover">
               <div class="skils_item_icon">
                 <img src="https://www.svgrepo.com/show/331760/sql-database-generic.svg" alt="SQL Icon">
               </div>
               <div class="skils_item_title">
                 <h3 class="heading-small">SQL</h3>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="width: 85%;"></div>
+                </div>
               </div>
             </div>
-            <!-- Skill Box: C++ -->
-            <div class="home-skils_item">
+            <!-- Skill Box: Hibernate -->
+            <div class="home-skils_item card-hover">
               <div class="skils_item_icon">
-                <img src="https://www.svgrepo.com/show/353874/hibernate.svg" alt="hibernate Icon">
+                <img src="https://www.svgrepo.com/show/353874/hibernate.svg" alt="Hibernate Icon">
               </div>
               <div class="skils_item_title">
                 <h3 class="heading-small">Hibernate</h3>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="width: 75%;"></div>
+                </div>
               </div>
             </div>
             <!-- Skill Box: Python -->
-            <div class="home-skils_item">
+            <div class="home-skils_item card-hover">
               <div class="skils_item_icon">
                 <img src="https://www.svgrepo.com/show/452091/python.svg" alt="Python Icon">
               </div>
               <div class="skils_item_title">
                 <h3 class="heading-small">Python</h3>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="width: 80%;"></div>
+                </div>
               </div>
             </div>
-            <!-- Skill Box: C++ -->
-            <div class="home-skils_item">
+            <!-- Skill Box: MongoDB -->
+            <div class="home-skils_item card-hover">
               <div class="skils_item_icon">
-                <img src="https://www.svgrepo.com/show/373845/mongo.svg" alt="C++ Icon">
+                <img src="https://www.svgrepo.com/show/373845/mongo.svg" alt="MongoDB Icon">
               </div>
               <div class="skils_item_title">
                 <h3 class="heading-small">MongoDB</h3>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="width: 75%;"></div>
+                </div>
               </div>
             </div>
-            <!-- Skill Box: C++ -->
-            <div class="home-skils_item">
+            <!-- Skill Box: Firebase -->
+            <div class="home-skils_item card-hover">
               <div class="skils_item_icon">
-                <img src="https://www.svgrepo.com/show/353735/firebase.svg" alt="C++ Icon">
+                <img src="https://www.svgrepo.com/show/353735/firebase.svg" alt="Firebase Icon">
               </div>
               <div class="skils_item_title">
                 <h3 class="heading-small">Firebase</h3>
+                <div class="skill-progress">
+                  <div class="progress-bar" style="width: 80%;"></div>
+                </div>
               </div>
             </div>
             
@@ -249,165 +287,180 @@
     </div>
   </section>
 
-  <!-- @@@experience -->
+  <!-- Experience Section -->
   <section id="experience" class="experience_page">
     <div class="page-padding">
       <div class="padding-vertical padding-xhuge">
-        <div class="experience_section_title">
+        <div class="experience_section_title fade-in">
           <div class="small-title">Experience</div>
           <div class="large-title">
-            <h2>My Experiences</h2>
+            <h2 class="gradient-text">My Experiences</h2>
           </div>
         </div>
         <div class="experience_container">
-          <h1>INTERNSHIPS</h1>
-          <ul>
-            <li style="--accent-color:#41516C">
+          <h3 class="experience-category fade-in">INTERNSHIPS</h3>
+          <ul class="experience-timeline">
+            <li class="experience-item card-hover" style="--accent-color:#41516C">
               <div class="date">May 2022</div>
               <div class="title">Basics of ML with Python internship</div>
               <div class="descr">
-                Company: <b>BeyonDegree Pvt. Ltd</b>
-                <br>
-                Year: <b>2023</b>
+                <div class="company-info">
+                  <span class="company-label">Company:</span> <strong class="company-name">BeyonDegree Pvt. Ltd</strong>
+                  <br>
+                  <span class="year-label">Year:</span> <strong class="year">2023</strong>
+                </div>
                 <hr>
-                During my internship at BeyonDegree Pvt. Ltd, I gained foundational knowledge in Machine Learning
+                <p>During my internship at BeyonDegree Pvt. Ltd, I gained foundational knowledge in Machine Learning
                 using Python. This experience provided me with a solid understanding of essential ML concepts and
-                techniques, including:
-                <b>
-                  <br>Python Libraries:</b> NumPy, pandas, and Matplotlib for data manipulation and visualization.
+                techniques, including:</p>
+                <div class="skills-used">
+                  <span class="skill-tag">Python Libraries</span>
+                  <span class="skill-tag">NumPy</span>
+                  <span class="skill-tag">pandas</span>
+                  <span class="skill-tag">Matplotlib</span>
+                </div>
               </div>
             </li>
-            <li style="--accent-color:#FBCA3E">
+            <li class="experience-item card-hover" style="--accent-color:#FBCA3E">
               <div class="date">April 2023</div>
               <div class="title">Web Development</div>
               <div class="descr">
-                Company: <b>CodeClause</b>
-                <br>
-                Year: <b>2023</b>
-                <hr>
-                During my web development internship at CodeClause, I worked on both front-end and back-end development
-                projects. This role allowed me to develop a comprehensive skill set in web technologies:
-                <br>
-                <b>
-                  Front-End Development
+                <div class="company-info">
+                  <span class="company-label">Company:</span> <strong class="company-name">CodeClause</strong>
                   <br>
-                  <b>Collaboration
+                  <span class="year-label">Year:</span> <strong class="year">2023</strong>
+                </div>
+                <hr>
+                <p>During my web development internship at CodeClause, I worked on both front-end and back-end development
+                projects. This role allowed me to develop a comprehensive skill set in web technologies:</p>
+                <div class="skills-used">
+                  <span class="skill-tag">Front-End Development</span>
+                  <span class="skill-tag">HTML/CSS</span>
+                  <span class="skill-tag">JavaScript</span>
+                  <span class="skill-tag">Collaboration</span>
+                </div>
               </div>
             </li>
-            <li style="--accent-color:#E24A68">
+            <li class="experience-item card-hover" style="--accent-color:#E24A68">
               <div class="date">June 2023</div>
-              <div class="title">Android Application Developement</div>
+              <div class="title">Android Application Development</div>
               <div class="descr">
-                Company: <b>ATJOIN Pvt. Ltd</b>
-                <br>
-                Year: <b>2023</b>
+                <div class="company-info">
+                  <span class="company-label">Company:</span> <strong class="company-name">ATJOIN Pvt. Ltd</strong>
+                  <br>
+                  <span class="year-label">Year:</span> <strong class="year">2023</strong>
+                </div>
                 <hr>
-                During my internship at ATJOIN Pvt. Ltd, I focused on developing and maintaining Android applications.
-                This role allowed me to enhance my skills in several key areas:
-                <br>
-                <b>App Development</b>
-                <br>
-                <b>Debugging and Testing</b>
+                <p>During my internship at ATJOIN Pvt. Ltd, I focused on developing and maintaining Android applications.
+                This role allowed me to enhance my skills in several key areas:</p>
+                <div class="skills-used">
+                  <span class="skill-tag">App Development</span>
+                  <span class="skill-tag">Java</span>
+                  <span class="skill-tag">Android SDK</span>
+                  <span class="skill-tag">Debugging</span>
+                  <span class="skill-tag">Testing</span>
+                </div>
               </div>
             </li>
           </ul>
         </div>
       </div>
+    </div>
   </section>
 
 
   <!-- @@@ Coding Achievements -->
- <!-- Coding Achievements -->
+ <!-- Achievements Section -->
     <section id="coding-achievements" class="coding-achievements_section">
         <div class="page-padding">
             <div class="padding-vertical padding-xhuge">
-                <div class="project_section_title">
+                <div class="project_section_title fade-in">
                     <div class="small-title">Achievements</div>
                     <div class="large-title">
-                        <h2 class="coding-achievements_title">Coding Achievements</h2>
+                        <h2 class="coding-achievements_title gradient-text">Coding Achievements</h2>
                     </div>
                 </div>
 
                 <!-- Logos Section -->
-                <div class="coding-achievements_logos">
-                    <a href="https://leetcode.com/u/code-with-mahesh/" target="_blank">
+                <div class="coding-achievements_logos fade-in">
+                    <a href="https://leetcode.com/u/code-with-mahesh/" target="_blank" rel="noopener" class="platform-logo-link card-hover">
                         <img src="https://leetcode.com/static/images/LeetCode_logo_rvs.png" alt="LeetCode Logo" class="coding-achievements_logo">
                     </a>
-                    <a href="https://www.hackerrank.com/profile/maheshshinde9100" target="_blank">
+                    <a href="https://www.hackerrank.com/profile/maheshshinde9100" target="_blank" rel="noopener" class="platform-logo-link card-hover">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png" alt="HackerRank Logo" class="coding-achievements_logo">
                     </a>
-                    <a href="https://www.geeksforgeeks.org/user/coder_mahi/" target="_blank">
+                    <a href="https://www.geeksforgeeks.org/user/coder_mahi/" target="_blank" rel="noopener" class="platform-logo-link card-hover">
                         <img src="https://media.geeksforgeeks.org/wp-content/uploads/20210228231058/gfg.png" alt="GFG Logo" class="coding-achievements_logo">
                     </a>
-                    <a href="https://www.codechef.com/users/mahesh2112" target="_blank">
+                    <a href="https://www.codechef.com/users/mahesh2112" target="_blank" rel="noopener" class="platform-logo-link card-hover">
                         <img src="https://img.icons8.com/fluent/512/codechef.png" alt="CodeChef Logo" class="coding-achievements_logo">
                     </a>
                 </div>
 
                 <!-- Achievements Information Section -->
                 <div class="coding-achievements_container">
-                    <div class="coding-achievements_section2">
+                    <div class="coding-achievements_section2 card-hover">
                         <div class="coding-achievements_info">
-                            <h1>Platform Achievements
-                                <span class="stats-gif" style="font-size: 50px;">📊</span>
-                            </h1>
-                            <p>I actively solve DSA problems on platforms like LeetCode, GFG, and CodeChef, maintaining total active days: 167+ on LeetCode, and have earned certifications from GFG, HackerRank, Udemy, and Coursera, showcasing my coding expertise.</p>
+                            <h3 class="achievements-heading fade-in">Platform Achievements
+                                <span class="stats-gif" aria-hidden="true">📊</span>
+                            </h3>
+                            <p class="achievements-description fade-in">I actively solve DSA problems on platforms like LeetCode, GFG, and CodeChef, maintaining total active days: 167+ on LeetCode, and have earned certifications from GFG, HackerRank, Udemy, and Coursera, showcasing my coding expertise.</p>
                             
-                            <div class="coding-achievements_badges">
-                                <img src="https://assets.leetcode.com/static_assets/marketing/2024-50.gif" alt="LeetCode Badge" class="coding-achievements_badge">
-                                <img src="https://assets.leetcode.com/static_assets/others/2550.gif" alt="HackerRank Badge" class="coding-achievements_badge">
-                                <img src="https://assets.leetcode.com/static_assets/others/25100.gif" alt="LeetCode Badge" class="coding-achievements_badge">
-                                <img src="https://assets.leetcode.com/static_assets/others/Introduction_to_Pandas.gif" alt="HackerRank Badge" class="coding-achievements_badge">
+                            <div class="coding-achievements_badges fade-in">
+                                <img src="https://assets.leetcode.com/static_assets/marketing/2024-50.gif" alt="LeetCode Badge - 50 Day Streak" class="coding-achievements_badge card-hover">
+                                <img src="https://assets.leetcode.com/static_assets/others/2550.gif" alt="LeetCode Badge - 25 Problems Solved" class="coding-achievements_badge card-hover">
+                                <img src="https://assets.leetcode.com/static_assets/others/25100.gif" alt="LeetCode Badge - 100 Problems Solved" class="coding-achievements_badge card-hover">
+                                <img src="https://assets.leetcode.com/static_assets/others/Introduction_to_Pandas.gif" alt="LeetCode Badge - Pandas Introduction" class="coding-achievements_badge card-hover">
                             </div>
 
                             <!-- GitHub Analytics -->
-                            <div class="github-analytics">
-                                <h2>GitHub Analytics</h2>
+                            <div class="github-analytics fade-in">
+                                <h3 class="analytics-heading">GitHub Analytics</h3>
                                 <div class="github-stats">
-                                    <img src="https://github-readme-stats.vercel.app/api?username=coder-mahi&show_icons=true&theme=Light&hide_border=true&count_private=true&include_all_commits=true" alt="GitHub Stats">
-                                    <img src="https://github-readme-streak-stats.herokuapp.com/?user=coder-mahi&theme=Light&hide_border=true" alt="GitHub Streak">
+                                    <img src="https://github-readme-stats.vercel.app/api?username=coder-mahi&show_icons=true&theme=dark&hide_border=true&count_private=true&include_all_commits=true" alt="GitHub Stats" class="github-stat-card card-hover">
+                                    <img src="https://github-readme-streak-stats.herokuapp.com/?user=coder-mahi&theme=dark&hide_border=true" alt="GitHub Streak" class="github-stat-card card-hover">
                                 </div>
                             </div>
 
                             <!-- LeetCode Stats -->
-                            <div class="leetcode-stats">
-                                <img src="https://leetcode-stats.vercel.app/api?username=code-with-mahesh&theme=Light" alt="LeetCode Stats">
+                            <div class="leetcode-stats fade-in">
+                                <img src="https://leetcode-stats.vercel.app/api?username=code-with-mahesh&theme=dark" alt="LeetCode Stats" class="leetcode-stat-card card-hover">
                             </div>
                         </div>
                     </div>
 
                     <!-- Certifications -->
-                    <div class="coding-achievements_certifications">
-                        <h1>🏆 Certifications</h1>
-                        <ul>
-                            <li>
-                                <a href="https://www.hackerrank.com/certificates/fa38c0acdfc0" target="_blank">
-                                    HackerRank: Java Basics Certification
+                    <div class="coding-achievements_certifications card-hover">
+                        <h3 class="certifications-heading fade-in">🏆 Certifications</h3>
+                        <ul class="certifications-list">
+                            <li class="certification-item fade-in">
+                                <a href="https://www.hackerrank.com/certificates/fa38c0acdfc0" target="_blank" rel="noopener" class="certification-link">
+                                    <span class="certification-platform">HackerRank:</span> Java Basics Certification
                                 </a>
                             </li>
-                            <li>
-                                <a href="https://www.hackerrank.com/certificates/297cc1647c35" target="_blank">
-                                    HackerRank: React Basics Certification
+                            <li class="certification-item fade-in">
+                                <a href="https://www.hackerrank.com/certificates/297cc1647c35" target="_blank" rel="noopener" class="certification-link">
+                                    <span class="certification-platform">HackerRank:</span> React Basics Certification
                                 </a>
                             </li>
-                            <li>
-                                <a href="https://drive.google.com/file/d/1M0GjudjkREWMRi_x8DPWCTRK645vdUMO/view?usp=sharing" target="_blank">
-                                    GFG: Full Stack Developer Bootcamp - Master Frontend to Backend Certification
+                            <li class="certification-item fade-in">
+                                <a href="https://drive.google.com/file/d/1M0GjudjkREWMRi_x8DPWCTRK645vdUMO/view?usp=sharing" target="_blank" rel="noopener" class="certification-link">
+                                    <span class="certification-platform">GFG:</span> Full Stack Developer Bootcamp - Master Frontend to Backend Certification
                                 </a>
                             </li>
-                            <li>
-                                <a href="https://drive.google.com/file/d/1FYv4C24agNHho_iA6h2z_80uZCnwP8Qu/view?usp=sharing" target="_blank">
-                                    LetsUpgrade: React Bootcamp Participation
+                            <li class="certification-item fade-in">
+                                <a href="https://drive.google.com/file/d/1FYv4C24agNHho_iA6h2z_80uZCnwP8Qu/view?usp=sharing" target="_blank" rel="noopener" class="certification-link">
+                                    <span class="certification-platform">LetsUpgrade:</span> React Bootcamp Participation
                                 </a>
                             </li>
-                            <li>
-                                <a href="https://drive.google.com/file/d/1RIqbglUwC8u5n_dGEZwAigQasHGiSAXB/view?usp=sharing" target="_blank">
-                                    Udemy: Fullstack Instagram Clone Project Completion Certificate
+                            <li class="certification-item fade-in">
+                                <a href="https://drive.google.com/file/d/1RIqbglUwC8u5n_dGEZwAigQasHGiSAXB/view?usp=sharing" target="_blank" rel="noopener" class="certification-link">
+                                    <span class="certification-platform">Udemy:</span> Fullstack Instagram Clone Project Completion Certificate
                                 </a>
                             </li>
-                            <li>
-                                <a href="https://drive.google.com/file/d/1TifJbwpdHqm6HF0bkMdTodBDRmO2US_R/view?usp=sharing" target="_blank">
-                                    Coursera: Foundations of User Experience (UX) Design
+                            <li class="certification-item fade-in">
+                                <a href="https://drive.google.com/file/d/1TifJbwpdHqm6HF0bkMdTodBDRmO2US_R/view?usp=sharing" target="_blank" rel="noopener" class="certification-link">
+                                    <span class="certification-platform">Coursera:</span> Foundations of User Experience (UX) Design
                                 </a>
                             </li>
                         </ul>
@@ -417,46 +470,46 @@
         </div>
     </section>
 
-  <!-- @@@project -->
+  <!-- Project Section -->
   <section id="project" class="project-section-page">
     <div class="page-padding">
       <div class="padding-vertical padding-xhuge">
-        <div class="project-section-title">
+        <div class="project-section-title fade-in">
           <p class="small-title">Recent Projects</p>
-          <h2 class="large-title">Portfolio</h2>
+          <h2 class="large-title gradient-text">Portfolio</h2>
         </div>
-        <div class="carousel">
+        <div class="carousel fade-in">
           <!-- Carousel Container -->
           <div class="carousel-container">
             <!-- Individual Projects -->
-            <div class="carousel-item">
+            <div class="carousel-item card-hover">
               <img src="https://www.svgrepo.com/show/374032/reactjs.svg" alt="Fullstack Instagram Clone" style="filter: drop-shadow(0 0 1rem rgb(0, 0, 0));">
-              <h3>Mini Fullstack Instagram Clone</h3>
+              <h3 class="gradient-text">Mini Fullstack Instagram Clone</h3>
               <p>Developed Fullstack instagram clone which includes features like creating instagram profile, add posts, follow/unfollow users and comments on their posts. Tech Stack used : ReactJS, Firebase, Tailwind CSS</p>
-              <a href="https://github.com/coder-mahi/fullstack-instagram-clone" target="_blank" style="color: #03036b;">Visit Project</a>
+              <a href="https://github.com/coder-mahi/fullstack-instagram-clone" target="_blank" rel="noopener" class="primary-btn" style="color: white;">Visit Project</a>
             </div>
 
-            <div class="carousel-item">
+            <div class="carousel-item card-hover">
               <img src="https://www.svgrepo.com/show/374032/reactjs.svg" alt="Task Tracker" style="filter: drop-shadow(0 0 1rem rgb(0, 0, 0));">
-              <h3>TaskTracker</h3>
+              <h3 class="gradient-text">TaskTracker</h3>
               <p>Developed a fullstack web based Task-Management Application using ReactJS, ExpressJs, NodeJs and MongoDB</p>
-              <a href="https://github.com/coder-mahi/TaskTracker" target="_blank" style="color: #03036b;">Visit Project</a>
+              <a href="https://github.com/coder-mahi/TaskTracker" target="_blank" rel="noopener" class="primary-btn" style="color: white;">Visit Project</a>
             </div>
 
-            <div class="carousel-item">
+            <div class="carousel-item card-hover">
               <img src="https://www.svgrepo.com/show/452155/android.svg" alt="Student Mentoring Application" style="filter: drop-shadow(0 0 1rem rgb(0, 0, 0));">
-              <h3>Student Mentoring Application</h3>
+              <h3 class="gradient-text">Student Mentoring Application</h3>
               <p>Developed a student mentoring application in Android to connect students with mentors, featuring chat,
                 scheduling, and progress tracking.</p>
-              <a href="https://github.com/coder-mahi/SanjivaniMentorMeet3" target="_blank" style="color: #03036b;">Visit Project</a>
+              <a href="https://github.com/coder-mahi/SanjivaniMentorMeet3" target="_blank" rel="noopener" class="primary-btn" style="color: white;">Visit Project</a>
             </div>
 
-            <div class="carousel-item">
+            <div class="carousel-item card-hover">
               <img src="https://www.svgrepo.com/show/452228/html-5.svg" alt="Portfolio Website" style="filter: drop-shadow(0 0 1rem rgb(0, 0, 0));">
-              <h3>Portfolio Website</h3>
+              <h3 class="gradient-text">Portfolio Website</h3>
               <p>Developed a portfolio website showcasing projects and skills, featuring responsive design, interactive
                 elements, and smooth navigation using HTML, CSS, and JavaScript.</p>
-              <a href="https://github.com/coder-mahi/Portfolio2.0" target="_blank" style="color: #03036b;">Visit Project</a>
+              <a href="https://github.com/coder-mahi/Portfolio2.0" target="_blank" rel="noopener" class="primary-btn" style="color: white;">Visit Project</a>
             </div>
           </div>
           <!-- Next and Previous Buttons -->
@@ -464,101 +517,158 @@
           <button class="next-btn" aria-label="Next Project">&gt;</button>
         </div>
         <br><br>
-        <p class="small-title">Deployed Projects</p>
-        <ul>
-          <li>Mini Fullstack Instagram Clone :<a href="https://insta-clone-by-mahesh-shinde.netlify.app/">
-              https://insta-clone-by-mahesh-shinde.netlify.app/</a></li>
+        <div class="deployed-projects fade-in card-hover">
+          <p class="small-title gradient-text">Deployed Projects</p>
+          <ul>
+            <li>Mini Fullstack Instagram Clone: <a href="https://insta-clone-by-mahesh-shinde.netlify.app/" target="_blank" rel="noopener">
+                https://insta-clone-by-mahesh-shinde.netlify.app/</a></li>
 
-          <li>Personal Portfolio Website : <a
-              href="https://shindemaheshportfolio.netlify.app/">https://shindemaheshportfolio.netlify.app/</a></li>
-        </ul>
+            <li>Personal Portfolio Website: <a href="https://shindemaheshportfolio.netlify.app/" target="_blank" rel="noopener">
+                https://shindemaheshportfolio.netlify.app/</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- @@@about -->
-  <section id="about" class="about_section">
-    <div class="page-padding">
-      <div class="padding-vertical padding-xhuge">
-        <div class="project_section_title">
-          <div class="small-title">About</div>
-          <div class="large-title">
-            <h2>About Me</h2>
-          </div>
-        </div>
-        <div class="about_container">
-          <div class="about_container_section1">
-            <div class="about_img"></div>
-          </div>
-          <div class="about_container_section2">
-            <div class="about_info">
-              <h1>I'm Mahesh,</h1>
-              <h1 class="about_full">Aspiring Software Developer</h1>
-<p style="text-align: justify;">
-    Hi, I'm Mahesh Shinde, a Computer Engineering student at Sanjivani College of Engineering. With a Diploma in Computer Technology, I've developed strong skills in programming languages like C, C++, Java, Python, and SQL. I am passionate about technology and dedicated to creating impactful solutions.
-</p>
-              <div class="about_contact_details">
-                <p class="about_info_detail"><span class="blue_color">Age:</span>19</p>
-                <p class="about_info_detail"><span class="blue_color">Email:</span>maheshshinde9100@gmail.com</p>
-                <p class="about_info_detail"><span class="blue_color">place:</span>Yeola</p>
-                <p class="about_info_detail"><span class="blue_color">Phone:</span>+919529544681</p>
-              </div>
+  <!-- About Section -->
+  <section id="about" class="about-section-page">
+        <div class="page-padding">
+            <div class="padding-vertical padding-xhuge">
+                <div class="about-section-title fade-in">
+                    <p class="small-title">About Me</p>
+                    <h2 class="large-title gradient-text">About Me</h2>
+                </div>
+                <div class="about-section-content fade-in">
+                    <div class="about-section-image card-hover">
+                        <img src="./assets/images/profile.jpg" alt="Mahesh Shinde - Full Stack Developer" loading="lazy">
+                    </div>
+                    <div class="about-section-text card-hover">
+                        <h3 class="about-heading gradient-text">Hello, I'm Mahesh Shinde</h3>
+                        <p class="about-paragraph">I am a passionate Full Stack Developer with a strong foundation in both frontend and backend technologies. My journey in web development began during my college years, and I have since honed my skills through various projects and internships.</p>
+                        <p class="about-paragraph">I specialize in creating responsive, user-friendly web applications using modern technologies like React, Node.js, and MongoDB. I am also proficient in Java and have experience in Android development.</p>
+                        <p class="about-paragraph">When I'm not coding, I enjoy solving DSA problems on platforms like LeetCode and GeeksforGeeks, which helps me improve my problem-solving skills and algorithmic thinking.</p>
+                        <div class="about-section-details">
+                            <div class="about-section-detail fade-in">
+                                <h4 class="detail-label">Name:</h4>
+                                <p class="detail-value">Mahesh Shinde</p>
+                            </div>
+                            <div class="about-section-detail fade-in">
+                                <h4 class="detail-label">Email:</h4>
+                                <p class="detail-value">
+                                    <a href="mailto:maheshshinde9100@gmail.com" class="detail-link">maheshshinde9100@gmail.com</a>
+                                </p>
+                            </div>
+                            <div class="about-section-detail fade-in">
+                                <h4 class="detail-label">Phone:</h4>
+                                <p class="detail-value">
+                                    <a href="tel:+919130910021" class="detail-link">+91 9130 9100 21</a>
+                                </p>
+                            </div>
+                            <div class="about-section-detail fade-in">
+                                <h4 class="detail-label">Location:</h4>
+                                <p class="detail-value">Pune, Maharashtra, India</p>
+                            </div>
+                        </div>
+                        <div class="about-section-buttons fade-in">
+                            <a href="./assets/resume/Mahesh_Shinde_Resume.pdf" download class="about-section-button primary-btn" aria-label="Download my resume">Download Resume</a>
+                            <a href="#contact" class="about-section-button primary-btn" aria-label="Contact me">Contact Me</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- @@@contact -->
+  <!-- Contact Section -->
   <section id="contact" class="contact_section">
     <div class="page-padding">
       <div class="padding-vertical padding-xhuge">
-        <div class="contact_section_title">
-          <div class="small-title contact-title1">Contact</div>
-          <div class="large-title contact-title2">
-            <h2>Contact Form</h2>
+        <div class="project_section_title fade-in">
+          <div class="small-title">Contact</div>
+          <div class="large-title">
+            <h2 class="gradient-text">Contact Me</h2>
           </div>
         </div>
-        <div class="contact_section_container">
-          <div class="contact-form">
-            <form action="/contact" method="POST">
-              <div class="contact-inputs">
-                <div>
-                  <label for="firstname" class="label-wrapper">
-                    <span class="label-text">First Name:</span>
-                  </label>
-                  <input type="text" name="firstname" placeholder="first name" autocomplete="on" required>
+        <div class="contact_container fade-in">
+          <div class="contact_container_section1 card-hover">
+            <div class="contact_info">
+              <h3 class="contact-heading gradient-text">Let's Connect</h3>
+              <p class="contact-description">Feel free to reach out to me for any inquiries, collaborations, or just to say hello. I'm always open to
+                new opportunities and connections.</p>
+              <div class="contact_details">
+                <div class="contact_detail fade-in">
+                  <div class="contact_detail_icon">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  </div>
+                  <div class="contact_detail_text">
+                    <h4 class="contact-label">Email</h4>
+                    <p class="contact-value">
+                      <a href="mailto:contact.shindemahesh2112@gmail.com" class="contact-link">contact.shindemahesh9100@gmail.com</a>
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <label for="lastname" class="label-wrapper">
-                    <span class="label-text">Last Name:</span>
-                  </label>
-                  <input type="text" name="lastname" placeholder="last name" autocomplete="on" required>
+                <div class="contact_detail fade-in">
+                  <div class="contact_detail_icon">
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                  </div>
+                  <div class="contact_detail_text">
+                    <h4 class="contact-label">Phone</h4>
+                    <p class="contact-value">
+                      <a href="tel:+919529544681" class="contact-link">+91 9529544681</a>
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <label for="email" class="label-wrapper">
-                    <span class="label-text">Email Address:</span>
-                  </label>
-                  <input type="email" name="email" placeholder="xyz@email.com" autocomplete="on" required>
-                </div>
-                <div>
-                  <label for="mobno" class="label-wrapper">
-                    <span class="label-text">Mobile No:</span>
-                  </label>
-                  <input type="number" name="mobno" placeholder="mobile no" autocomplete="on" required>
+                <div class="contact_detail fade-in">
+                  <div class="contact_detail_icon">
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                  </div>
+                  <div class="contact_detail_text">
+                    <h4 class="contact-label">Location</h4>
+                    <p class="contact-value">Yeola, Maharashtra, India</p>
+                  </div>
                 </div>
               </div>
-              <div class="contact-item-center">
-                <label for="description" class="label-wrapper">
-                  <span class="label-text">Description:</span>
-                </label>
-                <textarea name="description" placeholder="description" spellcheck="true"></textarea>
-                <button class="contact-btn" role="button" type="submit"><span class="text">Submit</span></button>
+              <div class="contact_social fade-in">
+                <a href="https://github.com/coder-mahi" target="_blank" rel="noopener" class="contact_social_link" aria-label="Visit my GitHub profile">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mahesh-shinde-a2a6a7227/" target="_blank" rel="noopener"
+                  class="contact_social_link" aria-label="Visit my LinkedIn profile">
+                  <i class="fab fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="https://leetcode.com/u/code-with-mahesh/" target="_blank" rel="noopener" class="contact_social_link" aria-label="Visit my LeetCode profile">
+                  <i class="fab fa-leetcode" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/mahesh_shinde_2112/" target="_blank" rel="noopener" class="contact_social_link" aria-label="Visit my Instagram profile">
+                  <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
               </div>
-            </form>
-
+            </div>
+          </div>
+          <div class="contact_container_section2 card-hover">
+            <div class="contact_form">
+              <h3 class="form-heading gradient-text">Send Me a Message</h3>
+              <form action="#" method="POST" class="contact-form">
+                <div class="contact_form_group fade-in">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your Name" required class="form-input">
+                </div>
+                <div class="contact_form_group fade-in">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" id="email" name="email" placeholder="Your Email" required class="form-input">
+                </div>
+                <div class="contact_form_group fade-in">
+                  <label for="subject" class="form-label">Subject</label>
+                  <input type="text" id="subject" name="subject" placeholder="Subject" required class="form-input">
+                </div>
+                <div class="contact_form_group fade-in">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea id="message" name="message" placeholder="Your Message" required class="form-textarea"></textarea>
+                </div>
+                <button type="submit" class="contact_form_button primary-btn fade-in">Send Message</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -567,101 +677,65 @@
 
   </main>
 
-  <!-- @@@footer -->
+  <!-- Footer Section -->
   <footer class="footer">
-    <div class="footer-detail section1">
-      <h3>Mahesh_Portfolio</h3>
-      <p class="thanks">
-        Thank you for visiting my personal portfolio website. Connect with
-        me over socials.
-      </p>
-
-      <p class="keep">
-        Keep Rising ??. Connect with me over live chat!
-      </p>
-    </div>
-    <div class="footer-detail section2">
-      <h3>Quick Links</h3>
-      <ul>
-        <a href="#home">
-          <li><img src="images/footer-icons/black-home-icon.png">
-            Home
-        </a></li>
-        <li>
-          <a href="#about">
-            <img src="images/footer-icons/black-info-icon.png">
-            About</a>
-        </li>
-        <li>
-          <a href="#skill">
-            <img src="images/footer-icons/black-skills-icon.png">
-            Services</a>
-        </li>
-        <li>
-          <a href="#experience">
-            <img src="images/footer-icons/black-experiences-icon.png">
-            Experience</a>
-        </li>
-        <li>
-          <a href="#project">
-            <img src="images/footer-icons/black-projects-icon.png">Projects</a>
-        </li>
-      </ul>
-    </div>
-    <div class="footer-detail section3">
-      <h3>Contact Info</h3>
-      <div class="footer-contact-info">
-        <img src="images/footer-icons/black-contact-icon.png">
-        <p>+919529544681</p>
+    <div class="footer-container fade-in">
+      <div class="footer-logo card-hover">
+        <a href="#home" class="gradient-text">Mahesh Shinde</a>
       </div>
-      <div class="footer-contact-info">
-        <img src="images/footer-icons/email.png">
-        <p>maheshshinde9100@gmail.com</p>
-      </div>
-      <div class="footer-contact-info">
-        <img src="images/footer-icons/location.png">
-        <p>Yeola-India-423402</p>
-      </div>
-      <ul class="social-link">
-        <li>
-          <div class="footer-social-item">
-            <img src="images/footer-icons/circular-github.png">
-            <a href="https://github.com/coder-mahi" target="_blank">
-              <h4>GitHub</h4>
+      <div class="footer-links">
+        <div class="footer-links-column card-hover">
+          <h3 class="footer-heading gradient-text">Quick Links</h3>
+          <ul class="footer-nav-list">
+            <li class="footer-nav-item"><a href="#home" class="footer-nav-link">Home</a></li>
+            <li class="footer-nav-item"><a href="#about" class="footer-nav-link">About</a></li>
+            <li class="footer-nav-item"><a href="#skill" class="footer-nav-link">Skills</a></li>
+            <li class="footer-nav-item"><a href="#experience" class="footer-nav-link">Experience</a></li>
+            <li class="footer-nav-item"><a href="#project" class="footer-nav-link">Projects</a></li>
+            <li class="footer-nav-item"><a href="#coding-achievements" class="footer-nav-link">Achievements</a></li>
+            <li class="footer-nav-item"><a href="#contact" class="footer-nav-link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-column card-hover">
+          <h3 class="footer-heading gradient-text">Contact Info</h3>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:maheshshinde9100@gmail.com" class="footer-contact-link">maheshshinde9100@gmail.com</a>
+            </li>
+            <li class="footer-contact-item">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+              <a href="tel:+919529544681" class="footer-contact-link">+91 9529544681</a>
+            </li>
+            <li class="footer-contact-item">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              <span class="footer-contact-text">Yeola, Maharashtra, India</span>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-links-column card-hover">
+          <h3 class="footer-heading gradient-text">Social Links</h3>
+          <div class="footer-social-links">
+            <a href="https://github.com/coder-mahi" target="_blank" rel="noopener" class="footer-social-link" aria-label="Visit my GitHub profile">
+              <i class="fab fa-github" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/mahesh-shinde-0a666b23b/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Visit my LinkedIn profile">
+              <i class="fab fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="https://leetcode.com/u/code-with-mahesh/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Visit my LeetCode profile">
+              <i class="fab fa-leetcode" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.instagram.com/mahi_shinde01/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Visit my Instagram profile">
+              <i class="fab fa-instagram" aria-hidden="true"></i>
             </a>
           </div>
-        </li>
-        <li>
-          <div class="footer-social-item">
-            <img src="images/footer-icons/circular-linkedin.png">
-            <a href=" https://www.linkedin.com/in/mahesh-shinde-0a666b23b/">
-              <h4>LinkedIn</h4>
-            </a>
-        </li>
-        <li>
-          <div class="footer-social-item">
-            <img src="images/icons/leetcode.png">
-            <a href="https://leetcode.com/u/code-with-mahesh/">
-              <h4>Leetcode</h4>
-            </a>
-        </li>
-        <li>
-          <div class="footer-social-item">
-            <img src="images/footer-icons/circular-instagram.png">
-            <a href="https://www.instagram.com/mahi_shinde01/">
-              <h4>Instagram</h4>
-            </a>
-        </li>
-      </ul>
-    </div>
-    <div class="footer-detail section4">
-      <div class="container">
-
-        <a href="https://maheshshinde9100.hackerresume.io/cdbe784f-7325-4ca3-a047-9a2c4ec314cc" id="resume-btn">
-          <button class="resume-btn" role="button">Download my resume
-            <i class="fa fa-download"></i>
-          </button>
-        </a>
+          <div class="footer-resume-download">
+            <a href="./assets/resume/Mahesh_Shinde_Resume.pdf" download class="primary-btn" aria-label="Download my resume">Download Resume</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright-text">&copy; 2023 Mahesh Shinde. All Rights Reserved.</p>
       </div>
     </div>
   </footer>

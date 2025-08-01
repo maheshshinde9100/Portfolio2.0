@@ -1,18 +1,129 @@
 * {
-  margin: 0px;
-  padding: 0px;
-  scroll-behavior:smooth;
-  scrollbar-width:auto;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  scrollbar-width: auto;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
+:root {
+  --primary-color: #5e3bee;
+  --secondary-color: #2a2a72;
+  --accent-color: #00c6ff;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --bg-primary: #f5fcff;
+  --bg-secondary: #e9f7ff;
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
+  --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  --transition-slow: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-medium: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
 body, html {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   min-width: 320px;
-  /* overflow-x: hidden; */
   font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+/* Utility Classes */
+.section-padding {
+  padding: 100px 0;
+}
+
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-medium);
+  box-shadow: 0 10px 20px rgba(94, 59, 238, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(94, 59, 238, 0.4);
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-medium);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 60px 0;
+  }
+  
+  .btn-primary {
+    padding: 10px 20px;
+  }
 }
