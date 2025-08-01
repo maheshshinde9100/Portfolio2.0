@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1 align="center">Hi 👋, I'm Mahesh Shinde</h1>
 <h3 align="center">A passionate Full Stack Web Developer from India</h3>
 
@@ -68,3 +69,6 @@
 <p align="center"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=coder-mahi" alt="coder-mahi" /></a> </p>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=coder-mahi&label=Profile%20views&color=0e75b6&style=flat" alt="coder-mahi" /> </p> 
+=======
+# Deployed : https://shindemaheshportfolio.netlify.app
+>>>>>>> 951c268aaf61d393da71cd8e607c1ac5d6f2ca44
