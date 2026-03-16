@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MAHESH SHINDE // FULL-STACK ENGINEER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#020408;--bg2:#040810;--bg3:#06101a;
+  --c1:#00ffe1;--c2:#0090ff;--c3:#7000ff;
+  --pink:#ff2d78;--amber:#ffc200;--green:#00ff88;--red:#ff3344;
+  --text:#cce8ff;--muted:rgba(100,180,255,0.45);--faint:rgba(0,255,225,0.08);
+  --b1:rgba(0,255,225,0.12);--b2:rgba(0,144,255,0.18);
+  --gC:0 0 25px rgba(0,255,225,0.35),0 0 70px rgba(0,255,225,0.08);
+  --gB:0 0 25px rgba(0,144,255,0.35),0 0 70px rgba(0,144,255,0.08);
+  --gP:0 0 25px rgba(112,0,255,0.35);
+  --fH:'Orbitron',monospace;
+  --fM:'Share Tech Mono',monospace;
+  --fB:'Rajdhani',sans-serif;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--fB);overflow-x:hidden;cursor:none;font-size:16px;line-height:1.6}
+
+/* ─── CURSOR ─── */
+#cur{position:fixed;z-index:99999;pointer-events:none;width:12px;height:12px;border:1.5px solid var(--c1);border-radius:50%;transform:translate(-50%,-50%);transition:width .15s,height .15s;mix-blend-mode:difference;box-shadow:0 0 8px var(--c1)}
+#cur2{position:fixed;z-index:99998;pointer-events:none;width:36px;height:36px;border:1px solid rgba(0,255,225,0.25);border-radius:50%;transform:translate(-50%,-50%)}
+body *{cursor:none!important}
+
+/* ─── CANVAS LAYERS ─── */
+#cMatrix{position:fixed;inset:0;z-index:0;opacity:.05;pointer-events:none}
+#cGrid{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background-image:linear-gradient(rgba(0,255,225,0.03) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(0,255,225,0.03) 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 100%)}
+#cNoise{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.018}
+
+/* ─── SCANLINES ─── */
+#scanlines{position:fixed;inset:0;z-index:3;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.12) 2px,rgba(0,0,0,.12) 4px);
+  animation:scanScroll 12s linear infinite}
+@keyframes scanScroll{to{background-position:0 100px}}
+
+/* ─── VIGNETTE ─── */
+#vignette{position:fixed;inset:0;z-index:4;pointer-events:none;
+  background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.75) 100%)}
+
+/* ─── HORIZONTAL SWEEP ─── */
+#sweep{position:fixed;top:0;left:-100%;width:60%;height:1px;z-index:5;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--c1),transparent);
+  animation:sweep 8s linear infinite;opacity:.4}
+@keyframes sweep{0%{left:-60%}100%{left:100%}}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:54px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 2rem;
+  background:rgba(2,4,8,.9);border-bottom:1px solid var(--b1);
+  backdrop-filter:blur(16px)}
+.nLogo{font-family:var(--fH);font-size:.78rem;font-weight:700;color:var(--c1);
+  letter-spacing:.18em;text-shadow:var(--gC);display:flex;align-items:center;gap:.6rem}
+.nLogo::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 8px var(--green);animation:blip 2s infinite}
+.nLinks{display:flex;list-style:none;gap:0}
+.nLinks a{display:block;padding:0 1rem;height:54px;line-height:54px;font-family:var(--fM);
+  font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  text-decoration:none;border-left:1px solid var(--b1);transition:all .25s;position:relative}
+.nLinks a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--c1);transform:scaleX(0);transition:transform .25s;box-shadow:var(--gC)}
+.nLinks a:hover{color:var(--c1);background:rgba(0,255,225,.03)}
+.nLinks a:hover::after{transform:scaleX(1)}
+.nRight{display:flex;align-items:center;gap:1rem}
+.nStatus{font-family:var(--fM);font-size:.62rem;color:var(--c1);display:flex;align-items:center;gap:.4rem}
+.nDot{width:5px;height:5px;border-radius:50%;background:var(--green);
+  animation:blip 1.5s infinite;box-shadow:0 0 8px var(--green)}
+.nTime{font-family:var(--fM);font-size:.58rem;color:var(--muted);padding-left:1rem;
+  border-left:1px solid var(--b1)}
+
+/* ─── SECTIONS ─── */
+.wrap{position:relative;z-index:10;max-width:1150px;margin:0 auto;padding:6rem 2rem}
+.sTag{font-family:var(--fM);font-size:.62rem;color:var(--c2);letter-spacing:.22em;
+  text-transform:uppercase;display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem}
+.sTag::before{content:'';width:28px;height:1px;background:var(--c2);box-shadow:0 0 6px var(--c2)}
+.sTitle{font-family:var(--fH);font-size:clamp(1.9rem,4.5vw,3rem);font-weight:700;
+  letter-spacing:-.01em;line-height:1;color:#fff}
+.sTitle em{font-style:normal;background:linear-gradient(90deg,var(--c1),var(--c2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sDash{width:70px;height:2px;margin-top:.9rem;
+  background:linear-gradient(90deg,var(--c1),transparent);box-shadow:0 0 8px var(--c1)}
+
+/* ─── HERO ─── */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:10;padding:6rem 2rem 3rem;flex-direction:column;text-align:center}
+.hFrame{position:relative;padding:3.5rem 2.5rem;max-width:920px;width:100%}
+.hFrame .c{position:absolute;width:28px;height:28px;border-color:var(--c1);border-style:solid}
+.hFrame .c.tl{top:0;left:0;border-width:2px 0 0 2px;box-shadow:-3px -3px 14px rgba(0,255,225,.2)}
+.hFrame .c.tr{top:0;right:0;border-width:2px 2px 0 0;box-shadow:3px -3px 14px rgba(0,255,225,.2)}
+.hFrame .c.bl{bottom:0;left:0;border-width:0 0 2px 2px;box-shadow:-3px 3px 14px rgba(0,255,225,.2)}
+.hFrame .c.br{bottom:0;right:0;border-width:0 2px 2px 0;box-shadow:3px 3px 14px rgba(0,255,225,.2)}
+.hSysTag{font-family:var(--fM);font-size:.68rem;color:var(--c2);letter-spacing:.2em;
+  margin-bottom:2rem;opacity:0;animation:riseIn .6s .3s ease forwards}
+.hSysTag::before{content:'[ '}
+.hSysTag::after{content:' ]'}
+.hName{font-family:var(--fH);font-weight:900;line-height:.92;letter-spacing:-.02em;
+  margin-bottom:1.5rem;opacity:0;animation:riseIn .7s .55s ease forwards}
+.hName .l1{display:block;font-size:clamp(3.8rem,10vw,8rem);color:#fff;
+  text-shadow:0 0 60px rgba(0,255,225,.12)}
+.hName .l2{display:block;font-size:clamp(1.8rem,5vw,4.2rem);
+  background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  background-size:300% 100%;animation:gShift 3s linear infinite,riseIn .7s .55s ease forwards}
+.hSub{font-family:var(--fB);font-size:clamp(.85rem,2vw,1.05rem);font-weight:500;
+  color:var(--muted);letter-spacing:.08em;margin-bottom:.8rem;
+  opacity:0;animation:riseIn .6s .8s ease forwards}
+.hTags{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem;
+  opacity:0;animation:riseIn .6s .95s ease forwards}
+.hTag{font-family:var(--fM);font-size:.62rem;padding:.2rem .7rem;
+  border:1px solid rgba(0,255,225,.2);color:rgba(0,255,225,.6);
+  background:rgba(0,255,225,.04);letter-spacing:.08em}
+.hStats{display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+  border:1px solid var(--b1);margin-bottom:2.5rem;position:relative;overflow:hidden;
+  opacity:0;animation:riseIn .6s 1.1s ease forwards}
+.hStats::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--c1),var(--c2),transparent);
+  animation:sweep2 3s linear infinite}
+@keyframes sweep2{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.hStat{padding:1.1rem .4rem;text-align:center;border-right:1px solid var(--b1);transition:background .3s}
+.hStat:last-child{border-right:none}
+.hStat:hover{background:rgba(0,255,225,.04)}
+.hSNum{font-family:var(--fH);font-size:1.45rem;font-weight:700;color:var(--c1);text-shadow:var(--gC)}
+.hSLbl{font-family:var(--fM);font-size:.55rem;color:var(--muted);letter-spacing:.1em;margin-top:.25rem}
+.hCTA{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;
+  opacity:0;animation:riseIn .6s 1.25s ease forwards}
+.btn{font-family:var(--fH);font-size:.65rem;font-weight:700;letter-spacing:.14em;
+  padding:.8rem 2rem;text-decoration:none;text-transform:uppercase;border:1px solid;
+  transition:all .3s;position:relative;overflow:hidden;cursor:none;display:inline-block;
+  clip-path:polygon(7px 0%,100% 0,calc(100% - 7px) 100%,0 100%)}
+.btn::before{content:'';position:absolute;inset:0;transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.btn:hover::before{transform:scaleX(1)}
+.btn:hover{transform:translateY(-2px)}
+.btnP{color:var(--bg);background:var(--c1);border-color:var(--c1);box-shadow:var(--gC)}
+.btnP::before{background:var(--c2)}
+.btnP:hover{box-shadow:0 0 50px rgba(0,255,225,.5)}
+.btnG{color:var(--c2);border-color:rgba(0,144,255,.4);background:transparent}
+.btnG::before{background:rgba(0,144,255,.1)}
+.btnG:hover{color:#fff;box-shadow:var(--gB)}
+
+/* ─── SCROLL BEACON ─── */
+.scrollBeacon{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  font-family:var(--fM);font-size:.58rem;color:var(--muted);letter-spacing:.15em;
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  opacity:0;animation:riseIn .6s 1.8s ease forwards}
+.scrollBeacon::after{content:'';width:1px;height:30px;background:linear-gradient(180deg,var(--c1),transparent);
+  animation:pulse 2s infinite}
+
+/* ─── ABOUT ─── */
+.aboutGrid{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;align-items:start}
+.aboutText p{font-size:.93rem;color:rgba(204,232,255,.65);line-height:1.85;margin-bottom:1.1rem;font-weight:400}
+.aboutText p strong{color:#fff;font-weight:600}
+.aboutText p .hl{color:var(--c1);font-weight:600}
+.infoBox{border:1px solid var(--b1);background:rgba(0,255,225,.015);padding:1.5rem}
+.infoBox .iHead{font-family:var(--fM);font-size:.6rem;color:var(--muted);letter-spacing:.15em;margin-bottom:1.1rem}
+.iRow{display:flex;gap:.7rem;margin-bottom:.7rem;font-family:var(--fM);font-size:.74rem;align-items:baseline}
+.iKey{color:var(--c2);min-width:95px;flex-shrink:0;letter-spacing:.06em}
+.iVal{color:#fff;line-height:1.4}
+.iVal.g{color:var(--green)}
+.iVal.a{color:var(--amber)}
+.iVal.p{color:#c084fc}
+
+/* ─── SKILL BARS ─── */
+.skillBarsGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 3.5rem;margin-bottom:3rem}
+.skillGroup .sgHead{font-family:var(--fM);font-size:.62rem;color:var(--c2);letter-spacing:.15em;margin-bottom:1.1rem;display:flex;align-items:center;gap:.5rem}
+.skillGroup .sgHead::before{content:'//';color:var(--muted)}
+.sBarRow{display:flex;align-items:center;gap:.9rem;margin-bottom:.85rem}
+.sBarName{font-family:var(--fM);font-size:.7rem;color:var(--text);min-width:118px;flex-shrink:0}
+.sBarTrack{flex:1;height:3px;background:rgba(0,255,225,.08);position:relative;overflow:visible}
+.sBarFill{height:100%;width:0;background:linear-gradient(90deg,var(--c1),var(--c2));
+  box-shadow:0 0 8px rgba(0,255,225,.5);transition:width 1.6s cubic-bezier(.16,1,.3,1);position:relative}
+.sBarFill::after{content:'';position:absolute;right:-1px;top:-4px;width:9px;height:9px;
+  background:var(--c1);border-radius:50%;box-shadow:var(--gC)}
+.sBarPct{font-family:var(--fM);font-size:.62rem;color:var(--muted);min-width:28px;text-align:right}
+
+/* ─── SKILL TAG GRID ─── */
+.skillTagGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--b1)}
+.sCard{background:var(--bg);padding:1.4rem;position:relative;overflow:hidden;transition:all .3s}
+.sCard::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;
+  background:linear-gradient(180deg,var(--c1),var(--c2));transition:height .4s;box-shadow:2px 0 12px var(--c1)}
+.sCard:hover{background:rgba(0,10,20,1)}
+.sCard:hover::before{height:100%}
+.sCatLabel{font-family:var(--fH);font-size:.62rem;font-weight:700;color:var(--c1);
+  letter-spacing:.12em;margin-bottom:.9rem;display:flex;align-items:center;gap:.4rem}
+.sCatLabel::before{content:'//';color:var(--muted);font-family:var(--fM);font-weight:400}
+.sTags{display:flex;flex-wrap:wrap;gap:.35rem}
+.sTag2{padding:.22rem .55rem;font-family:var(--fM);font-size:.64rem;
+  border:1px solid rgba(0,144,255,.2);color:rgba(0,200,255,.7);
+  background:rgba(0,144,255,.04);transition:all .22s;white-space:nowrap;
+  clip-path:polygon(4px 0,100% 0,calc(100% - 4px) 100%,0 100%)}
+.sTag2:hover{border-color:var(--c1);color:var(--c1);background:rgba(0,255,225,.07);
+  box-shadow:0 0 8px rgba(0,255,225,.15)}
+
+/* ─── EXPERIENCE TIMELINE ─── */
+.expTimeline{position:relative;padding-left:2.2rem}
+.expTimeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;
+  background:linear-gradient(180deg,var(--c1),var(--c2),var(--c3),rgba(0,255,225,.05));
+  box-shadow:0 0 8px rgba(0,255,225,.2)}
+.expItem{position:relative;margin-bottom:2.2rem;opacity:0;transform:translateX(-18px);transition:all .6s ease}
+.expItem.show{opacity:1;transform:translateX(0)}
+.expItem::before{content:'';position:absolute;left:-2.57rem;top:.85rem;width:11px;height:11px;
+  border:2px solid var(--c1);background:var(--bg);
+  box-shadow:0 0 14px var(--c1),0 0 28px rgba(0,255,225,.2);
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.expCard{background:rgba(0,8,18,.85);border:1px solid var(--b1);padding:1.75rem;
+  position:relative;overflow:hidden;transition:all .3s}
+.expCard::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--c1),transparent);
+  transform:scaleX(0);transition:transform .5s}
+.expCard:hover{border-color:rgba(0,255,225,.25);box-shadow:0 0 25px rgba(0,255,225,.06)}
+.expCard:hover::before{transform:scaleX(1)}
+.expHead{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.75rem;margin-bottom:1.2rem}
+.expRole{font-family:var(--fH);font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.05em}
+.expCo{font-family:var(--fM);font-size:.73rem;color:var(--c2);margin-top:.2rem}
+.expCo a{color:var(--c2);text-decoration:none}
+.expCo a:hover{color:var(--c1)}
+.expBadges{display:flex;flex-direction:column;gap:.35rem;align-items:flex-end}
+.badgeActive{font-family:var(--fM);font-size:.58rem;color:var(--green);
+  padding:.18rem .55rem;border:1px solid rgba(0,255,136,.25);background:rgba(0,255,136,.06);
+  display:flex;align-items:center;gap:.3rem}
+.badgeActive::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--green);animation:blip 1.5s infinite}
+.badgePeriod{font-family:var(--fM);font-size:.6rem;color:var(--muted);padding:.18rem .55rem;
+  border:1px solid var(--b1)}
+.expMetrics{display:flex;gap:1px;background:var(--b1);margin-bottom:1.2rem}
+.mCell{background:var(--bg);padding:1rem;text-align:center;flex:1;position:relative;overflow:hidden}
+.mCell::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--amber),transparent);animation:sweep2 2.5s linear infinite}
+.mVal{font-family:var(--fH);font-size:1.2rem;font-weight:700;color:var(--amber);
+  text-shadow:0 0 14px rgba(255,194,0,.4)}
+.mLbl{font-family:var(--fM);font-size:.56rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:.2rem}
+.expBullets{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.expBullets li{display:flex;gap:.6rem;font-size:.86rem;color:rgba(204,232,255,.62);
+  line-height:1.65;border-left:1px solid rgba(0,255,225,.07);padding-left:.75rem;transition:border-color .3s}
+.expBullets li:hover{border-left-color:var(--c1)}
+.expBullets li::before{content:'>';color:var(--c1);font-family:var(--fM);font-size:.72rem;flex-shrink:0;margin-top:.05rem}
+.expBullets li strong{color:#fff}
+
+/* ─── PROJECT FILTER ─── */
+.pfBar{display:flex;gap:0;margin-bottom:2rem;border:1px solid var(--b1);overflow:hidden;flex-wrap:wrap}
+.pfBtn{font-family:var(--fM);font-size:.62rem;letter-spacing:.1em;padding:.58rem 1.1rem;
+  border:none;background:transparent;color:var(--muted);cursor:none;
+  border-right:1px solid var(--b1);transition:all .22s;text-transform:uppercase;position:relative}
+.pfBtn:last-child{border-right:none}
+.pfBtn::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--c1);transform:scaleX(0);transition:transform .2s;box-shadow:var(--gC)}
+.pfBtn:hover,.pfBtn.on{color:var(--c1);background:rgba(0,255,225,.04)}
+.pfBtn.on::after{transform:scaleX(1)}
+
+/* ─── PROJECT GRID ─── */
+.projGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.4rem}
+.pCard{border:1px solid var(--b1);background:rgba(0,5,12,.7);padding:1.75rem;
+  display:flex;flex-direction:column;gap:.85rem;position:relative;overflow:hidden;
+  transition:all .38s}
+.pCard::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--c1),transparent);
+  transform:scaleX(0);transition:transform .5s}
+.pCard:hover{border-color:rgba(0,255,225,.28);transform:translateY(-4px);
+  box-shadow:0 20px 55px rgba(0,0,0,.5),0 0 28px rgba(0,255,225,.06)}
+.pCard:hover::after{transform:scaleX(1)}
+.pCard.hide{display:none}
+.pCardId{position:absolute;top:.9rem;right:.9rem;font-family:var(--fM);font-size:.55rem;
+  color:rgba(0,255,225,.15);letter-spacing:.1em}
+.pBadgeRow{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap}
+.pTitle{font-family:var(--fH);font-size:.9rem;font-weight:700;color:#fff;letter-spacing:.06em}
+.badge{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--fM);font-size:.56rem;
+  padding:.16rem .5rem;letter-spacing:.08em}
+.bLive{color:var(--green);background:rgba(0,255,136,.07);border:1px solid rgba(0,255,136,.22)}
+.bLive::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--green);animation:blip 1.5s infinite}
+.bNpm{color:var(--amber);background:rgba(255,194,0,.07);border:1px solid rgba(255,194,0,.22)}
+.bHack{color:var(--pink);background:rgba(255,45,120,.07);border:1px solid rgba(255,45,120,.22)}
+.bIot{color:#c084fc;background:rgba(192,132,252,.07);border:1px solid rgba(192,132,252,.22)}
+.bClient{color:var(--c2);background:rgba(0,144,255,.07);border:1px solid rgba(0,144,255,.22)}
+.bOss{color:var(--c1);background:rgba(0,255,225,.07);border:1px solid rgba(0,255,225,.22)}
+.pDesc{font-size:.82rem;color:rgba(204,232,255,.52);line-height:1.65;flex:1}
+.pFeats{display:flex;flex-direction:column;gap:.28rem}
+.pFeat{font-family:var(--fM);font-size:.66rem;color:rgba(0,255,225,.6);display:flex;align-items:center;gap:.4rem}
+.pFeat::before{content:'[+]';color:var(--c1);font-size:.58rem;flex-shrink:0}
+.pStack{display:flex;flex-wrap:wrap;gap:.32rem;margin-top:auto}
+.pTag{padding:.16rem .48rem;font-family:var(--fM);font-size:.58rem;color:rgba(192,132,252,.75);
+  background:rgba(112,0,255,.07);border:1px solid rgba(112,0,255,.18);transition:all .2s}
+.pTag:hover{border-color:#c084fc;color:#c084fc;box-shadow:0 0 7px rgba(192,132,252,.2)}
+.pLinks{display:flex;gap:.4rem}
+.pLink{font-family:var(--fM);font-size:.6rem;color:var(--c2);text-decoration:none;
+  padding:.22rem .6rem;border:1px solid rgba(0,144,255,.22);transition:all .22s;letter-spacing:.06em}
+.pLink:hover{border-color:var(--c2);color:#fff;background:rgba(0,144,255,.08)}
+.pCard.gold{border-color:rgba(255,194,0,.2);background:rgba(255,194,0,.012)}
+.pCard.gold:hover{border-color:rgba(255,194,0,.45);box-shadow:0 20px 55px rgba(0,0,0,.5),0 0 28px rgba(255,194,0,.1)}
+
+/* ─── RESEARCH ─── */
+.resCard{border:1px solid rgba(255,194,0,.2);background:rgba(255,194,0,.015);padding:2rem;position:relative;overflow:hidden}
+.resCard::before{content:'PEER_REVIEWED // MAT_JOURNALS_2025';position:absolute;top:.9rem;right:1.4rem;
+  font-family:var(--fM);font-size:.58rem;color:var(--amber);letter-spacing:.1em}
+.resCard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--amber),transparent);animation:sweep2 4s linear infinite}
+.resTitle{font-family:var(--fH);font-size:1rem;font-weight:700;color:#fff;line-height:1.45;
+  max-width:700px;letter-spacing:.03em}
+.resJournal{font-family:var(--fM);font-size:.68rem;color:var(--amber);margin-top:.5rem;letter-spacing:.04em}
+.resDesc{font-size:.84rem;color:rgba(204,232,255,.52);line-height:1.7;max-width:730px;margin-top:.9rem}
+
+/* ─── CERTIFICATIONS ─── */
+.certGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1px;background:var(--b1)}
+.certCard{background:var(--bg);padding:1.4rem;position:relative;overflow:hidden;transition:all .3s;cursor:default}
+.certCard:hover{background:rgba(0,10,20,1)}
+.certScan{position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--c1),transparent);transform:translateY(-100%)}
+.certCard:hover .certScan{animation:cscan .8s ease forwards}
+@keyframes cscan{to{transform:translateY(600%)}}
+.certNum{font-family:var(--fH);font-size:1.6rem;font-weight:700;color:var(--c1);
+  text-shadow:var(--gC);margin-bottom:.4rem}
+.certTitle{font-size:.8rem;font-weight:600;color:#fff;line-height:1.3;font-family:var(--fB)}
+.certSub{font-family:var(--fM);font-size:.62rem;color:var(--muted);margin-top:.28rem}
+
+/* ─── EDUCATION ─── */
+.eduTimeline{position:relative;padding-left:2rem}
+.eduTimeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;
+  background:linear-gradient(180deg,var(--c1),var(--c2),rgba(0,255,225,.08));
+  box-shadow:0 0 8px rgba(0,255,225,.18)}
+.eduItem{position:relative;margin-bottom:2.2rem}
+.eduItem::before{content:'';position:absolute;left:-2.32rem;top:.3rem;width:11px;height:11px;
+  border:2px solid var(--c1);background:var(--bg);
+  box-shadow:0 0 12px var(--c1);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.eduYear{font-family:var(--fM);font-size:.66rem;color:var(--c2);margin-bottom:.3rem;letter-spacing:.1em}
+.eduDeg{font-family:var(--fH);font-size:.88rem;font-weight:700;color:#fff;letter-spacing:.05em}
+.eduSch{font-family:var(--fM);font-size:.74rem;color:var(--muted);margin-top:.2rem}
+.eduGrade{display:inline-block;margin-top:.4rem;padding:.15rem .6rem;font-family:var(--fM);
+  font-size:.65rem;color:var(--c1);border:1px solid rgba(0,255,225,.2);background:rgba(0,255,225,.04)}
+
+/* ─── CONTACT ─── */
+.contactIntro{font-family:var(--fM);font-size:.78rem;color:var(--muted);
+  line-height:1.9;margin-bottom:2rem;max-width:680px}
+.contactGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1px;background:var(--b1)}
+.cCard{display:flex;align-items:center;gap:.9rem;background:var(--bg);padding:1.1rem;
+  text-decoration:none;color:#fff;transition:all .28s;position:relative;overflow:hidden}
+.cCard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--c1);transform:scaleY(0);transition:transform .28s;box-shadow:2px 0 8px var(--c1)}
+.cCard:hover{background:rgba(0,10,20,1);color:var(--c1)}
+.cCard:hover::before{transform:scaleY(1)}
+.cIcon{width:36px;height:36px;border:1px solid var(--b2);display:flex;align-items:center;
+  justify-content:center;font-size:.82rem;flex-shrink:0;background:rgba(0,144,255,.04);
+  transition:all .28s;font-family:var(--fM)}
+.cCard:hover .cIcon{border-color:var(--c1);box-shadow:0 0 10px rgba(0,255,225,.15)}
+.cLabel{font-family:var(--fM);font-size:.58rem;color:var(--muted);letter-spacing:.1em;margin-bottom:.1rem}
+.cVal{font-size:.78rem;font-weight:600;font-family:var(--fB)}
+
+/* ─── SOCIAL LINKS ROW ─── */
+.socialRow{display:flex;gap:1px;background:var(--b1);margin-top:1px}
+.socLink{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;
+  background:var(--bg);padding:1rem;text-decoration:none;
+  font-family:var(--fM);font-size:.65rem;color:var(--muted);letter-spacing:.1em;
+  transition:all .25s;border-right:1px solid var(--b1)}
+.socLink:last-child{border-right:none}
+.socLink:hover{color:var(--c1);background:rgba(0,255,225,.04)}
+
+/* ─── FOOTER ─── */
+footer{position:relative;z-index:10;text-align:center;padding:3rem 2rem;
+  border-top:1px solid var(--b1);background:rgba(0,0,5,.95)}
+.ftName{font-family:var(--fH);font-size:1.6rem;font-weight:900;letter-spacing:.1em;
+  background:linear-gradient(90deg,var(--c1),var(--c2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.4rem}
+.ftSub{font-family:var(--fM);font-size:.65rem;color:var(--muted);letter-spacing:.14em;margin-bottom:1.8rem}
+.ftLinks{display:inline-flex;border:1px solid var(--b1)}
+.ftLink{color:var(--muted);text-decoration:none;font-family:var(--fM);font-size:.65rem;
+  padding:.5rem 1rem;border-right:1px solid var(--b1);letter-spacing:.1em;transition:all .25s}
+.ftLink:last-child{border-right:none}
+.ftLink:hover{color:var(--c1);background:rgba(0,255,225,.04)}
+.ftCopy{margin-top:1.8rem;font-family:var(--fM);font-size:.56rem;color:rgba(0,255,225,.1);letter-spacing:.2em}
+
+/* ─── HUD DIVIDER ─── */
+.hudDiv{display:flex;align-items:center;gap:1rem;margin:0 0 2rem}
+.hudDiv-l{flex:1;height:1px;background:linear-gradient(90deg,var(--c1),transparent)}
+.hudDiv-r{flex:1;height:1px;background:linear-gradient(270deg,var(--c1),transparent)}
+.hudDiv span{font-family:var(--fM);font-size:.58rem;color:var(--c2);letter-spacing:.15em;white-space:nowrap}
+
+/* ─── ANIMATIONS ─── */
+@keyframes riseIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blip{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(1.6)}}
+@keyframes gShift{0%{background-position:0 50%}100%{background-position:300% 50%}}
+@keyframes glitch{
+  0%,89%,100%{transform:translateX(0);opacity:1;clip-path:none}
+  90%{transform:translateX(-3px);clip-path:polygon(0 0,100% 0,100% 30%,0 30%);opacity:.9}
+  92%{transform:translateX(3px)}
+  94%{transform:translateX(0);clip-path:none}
+  96%{transform:translateX(2px);clip-path:polygon(0 70%,100% 70%,100% 100%,0 100%)}
+  98%{transform:translateX(-1px)}
+}
+.glitch{animation:glitch 6s ease infinite}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.reveal.show{opacity:1;transform:translateY(0)}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--c1),var(--c2))}
+html{scrollbar-width:thin;scrollbar-color:var(--c1) var(--bg)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .nLinks{display:none}
+  .hStats{grid-template-columns:repeat(3,1fr)}
+  .hStats .hStat:nth-child(4),.hStats .hStat:nth-child(5){border-top:1px solid var(--b1)}
+  .aboutGrid{grid-template-columns:1fr}
+  .skillBarsGrid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .hStats{grid-template-columns:repeat(2,1fr)}
+  .wrap{padding:4rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- ATMOSPHERE LAYERS -->
+<canvas id="cMatrix"></canvas>
+<div id="cGrid"></div>
+<canvas id="cNoise"></canvas>
+<div id="scanlines"></div>
+<div id="vignette"></div>
+<div id="sweep"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nLogo">MAHESH_SHINDE</div>
+  <ul class="nLinks">
+    <li><a href="#hero">HOME</a></li>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#skills">STACK</a></li>
+    <li><a href="#experience">EXP</a></li>
+    <li><a href="#projects">PROJECTS</a></li>
+    <li><a href="#research">RESEARCH</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+  </ul>
+  <div class="nRight">
+    <div class="nStatus"><span class="nDot"></span><span id="nMsg">SYS_ONLINE</span></div>
+    <div class="nTime" id="nTime"></div>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section id="hero">
+  <div class="hFrame">
+    <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+    <div class="hSysTag">BACKEND_ENGINEER // FULL-STACK // ANDROID // IOT_RESEARCHER // OPEN_TO_HIRE</div>
+    <h1 class="hName">
+      <span class="l1 glitch">MAHESH</span>
+      <span class="l2">SHINDE.</span>
+    </h1>
+    <div class="hSub">Full-Stack Developer &nbsp;·&nbsp; Android Developer &nbsp;·&nbsp; Java Engineer</div>
+    <div class="hTags">
+      <span class="hTag">ReactJS</span><span class="hTag">Java</span><span class="hTag">Spring Boot</span>
+      <span class="hTag">Android</span><span class="hTag">Google Cloud</span><span class="hTag">Microservices</span>
+      <span class="hTag">IoT</span><span class="hTag">MongoDB</span>
+    </div>
+    <div class="hStats">
+      <div class="hStat"><div class="hSNum" data-t="2604">2604<span style="color:var(--c2);font-size:.8rem">+</span></div><div class="hSLbl">GitHub Commits</div></div>
+      <div class="hStat"><div class="hSNum">22<span style="color:var(--c2);font-size:.8rem">+</span></div><div class="hSLbl">Live Apps</div></div>
+      <div class="hStat"><div class="hSNum" data-t="298">298<span style="color:var(--c2);font-size:.8rem">+</span></div><div class="hSLbl">LeetCode Solved</div></div>
+      <div class="hStat"><div class="hSNum">644<span style="color:var(--c2);font-size:.8rem">+</span></div><div class="hSLbl">LC Submissions</div></div>
+      <div class="hStat"><div class="hSNum" style="animation:none;font-size:1.2rem">8.32</div><div class="hSLbl">CGPA / 10</div></div>
+    </div>
+    <div class="hCTA">
+      <a href="https://maheshshinde-dev.vercel.app" target="_blank" class="btn btnP">VIEW PORTFOLIO ↗</a>
+      <a href="mailto:maheshshinde9100@gmail.com" class="btn btnG">GET IN TOUCH</a>
+      <a href="#" class="btn btnG" style="border-color:rgba(0,255,225,.35);color:var(--c1)">RESUME ↓</a>
+    </div>
+  </div>
+  <div class="scrollBeacon">SCROLL TO EXPLORE</div>
+</section>
+
+<!-- ═══════════════════ ABOUT ═══════════════════ -->
+<div class="wrap reveal" id="about">
+  <div style="margin-bottom:3rem">
+    <div class="sTag">01 // SYSTEM_PROFILE</div>
+    <h2 class="sTitle">About <em>Me</em></h2>
+    <div class="sDash"></div>
+  </div>
+  <div class="aboutGrid">
+    <div class="aboutText">
+      <p>Passionate <strong>Full Stack Developer</strong> crafting responsive, user-centric web and mobile experiences. I enjoy building <span class="hl">performant interfaces</span> and solving complex engineering problems end to end.</p>
+      <p>I specialize in <strong>React, Spring Boot and MongoDB</strong>, with strong Java and Android experience. My journey started in college and evolved through <span class="hl">internships and hands-on production projects</span> — including a live crowdfunding platform serving real users.</p>
+      <p>I sharpen my DSA skills daily on <strong>LeetCode and GeeksforGeeks</strong>, which helps me think algorithmically and build efficient, well-reasoned solutions. Published IoT researcher, npm package author, and open-source contributor with <span class="hl">2604+ GitHub contributions</span> across 22+ deployed applications.</p>
+      <p>Currently interning at <strong>Goloka IT</strong> as Backend Developer — architecting FundForBharat, a production crowdfunding platform with real Razorpay transactions at <span class="hl">99.9% uptime</span>.</p>
+    </div>
+    <div>
+      <div class="infoBox">
+        <div class="iHead">// CORE_IDENTIFIERS</div>
+        <div class="iRow"><span class="iKey">NAME</span><span class="iVal">Mahesh Shinde</span></div>
+        <div class="iRow"><span class="iKey">LOCATION</span><span class="iVal">Nashik, Maharashtra, IN</span></div>
+        <div class="iRow"><span class="iKey">DEGREE</span><span class="iVal">B.Tech CE · SPPU · 2027</span></div>
+        <div class="iRow"><span class="iKey">CURRENT</span><span class="iVal g">Goloka IT · Backend Intern</span></div>
+        <div class="iRow"><span class="iKey">RESEARCH</span><span class="iVal a">MAT Journals 2025 · Published</span></div>
+        <div class="iRow"><span class="iKey">npm PKG</span><span class="iVal p">ms-ui-kit · Public</span></div>
+        <div class="iRow"><span class="iKey">EMAIL</span><span class="iVal" style="font-size:.68rem">maheshshinde9100@gmail.com</span></div>
+        <div class="iRow"><span class="iKey">PHONE</span><span class="iVal">+91 9529544681</span></div>
+        <div class="iRow"><span class="iKey">STATUS</span><span class="iVal g">● OPEN TO OPPORTUNITIES</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SKILLS ═══════════════════ -->
+<div class="wrap reveal" id="skills">
+  <div style="margin-bottom:3rem">
+    <div class="sTag">02 // TECH_ARSENAL</div>
+    <h2 class="sTitle">Skills <em>Matrix</em></h2>
+    <div class="sDash"></div>
+  </div>
+
+  <!-- PROFICIENCY BARS -->
+  <div class="skillBarsGrid">
+    <div class="skillGroup">
+      <div class="sgHead">Core Technologies</div>
+      <div class="sBarRow"><span class="sBarName">Spring Boot</span><div class="sBarTrack"><div class="sBarFill" data-w="92"></div></div><span class="sBarPct">92%</span></div>
+      <div class="sBarRow"><span class="sBarName">Java</span><div class="sBarTrack"><div class="sBarFill" data-w="91"></div></div><span class="sBarPct">91%</span></div>
+      <div class="sBarRow"><span class="sBarName">Hibernate ORM</span><div class="sBarTrack"><div class="sBarFill" data-w="90"></div></div><span class="sBarPct">90%</span></div>
+      <div class="sBarRow"><span class="sBarName">MongoDB</span><div class="sBarTrack"><div class="sBarFill" data-w="89"></div></div><span class="sBarPct">89%</span></div>
+      <div class="sBarRow"><span class="sBarName">Android Studio</span><div class="sBarTrack"><div class="sBarFill" data-w="86"></div></div><span class="sBarPct">86%</span></div>
+      <div class="sBarRow"><span class="sBarName">JavaScript</span><div class="sBarTrack"><div class="sBarFill" data-w="85"></div></div><span class="sBarPct">85%</span></div>
+      <div class="sBarRow"><span class="sBarName">React.js</span><div class="sBarTrack"><div class="sBarFill" data-w="80"></div></div><span class="sBarPct">80%</span></div>
+      <div class="sBarRow"><span class="sBarName">Tailwind CSS</span><div class="sBarTrack"><div class="sBarFill" data-w="80"></div></div><span class="sBarPct">80%</span></div>
+    </div>
+    <div class="skillGroup">
+      <div class="sgHead">Tools & Platforms</div>
+      <div class="sBarRow"><span class="sBarName">Git / Postman</span><div class="sBarTrack"><div class="sBarFill" data-w="95"></div></div><span class="sBarPct">95%</span></div>
+      <div class="sBarRow"><span class="sBarName">Node.js</span><div class="sBarTrack"><div class="sBarFill" data-w="70"></div></div><span class="sBarPct">70%</span></div>
+      <div class="sBarRow"><span class="sBarName">Maven</span><div class="sBarTrack"><div class="sBarFill" data-w="75"></div></div><span class="sBarPct">75%</span></div>
+      <div class="sBarRow"><span class="sBarName">Google Cloud</span><div class="sBarTrack"><div class="sBarFill" data-w="72"></div></div><span class="sBarPct">72%</span></div>
+      <div class="sBarRow"><span class="sBarName">Docker</span><div class="sBarTrack"><div class="sBarFill" data-w="65"></div></div><span class="sBarPct">65%</span></div>
+      <div class="sBarRow"><span class="sBarName">Redis</span><div class="sBarTrack"><div class="sBarFill" data-w="60"></div></div><span class="sBarPct">60%</span></div>
+      <div class="sBarRow"><span class="sBarName">MySQL</span><div class="sBarTrack"><div class="sBarFill" data-w="88"></div></div><span class="sBarPct">88%</span></div>
+      <div class="sBarRow"><span class="sBarName">Firebase</span><div class="sBarTrack"><div class="sBarFill" data-w="82"></div></div><span class="sBarPct">82%</span></div>
+    </div>
+  </div>
+
+  <!-- TAG GRID -->
+  <div class="skillTagGrid">
+    <div class="sCard"><div class="sCatLabel">Backend</div><div class="sTags"><span class="sTag2">Spring Boot</span><span class="sTag2">Spring MVC</span><span class="sTag2">Spring Security</span><span class="sTag2">Spring Data JPA</span><span class="sTag2">Hibernate ORM</span><span class="sTag2">RESTful APIs</span><span class="sTag2">Microservices</span></div></div>
+    <div class="sCard"><div class="sCatLabel">Languages</div><div class="sTags"><span class="sTag2">Java 8+</span><span class="sTag2">JavaScript ES6+</span><span class="sTag2">SQL</span><span class="sTag2">Python</span><span class="sTag2">XML</span><span class="sTag2">Core Java</span><span class="sTag2">Multithreading</span></div></div>
+    <div class="sCard"><div class="sCatLabel">Frontend & Mobile</div><div class="sTags"><span class="sTag2">React.js</span><span class="sTag2">Next.js</span><span class="sTag2">TypeScript</span><span class="sTag2">Tailwind CSS</span><span class="sTag2">ShadCN UI</span><span class="sTag2">Android SDK</span><span class="sTag2">HTML5/CSS3</span></div></div>
+    <div class="sCard"><div class="sCatLabel">Databases & Cache</div><div class="sTags"><span class="sTag2">MySQL</span><span class="sTag2">PostgreSQL</span><span class="sTag2">MongoDB</span><span class="sTag2">Firebase Realtime DB</span><span class="sTag2">Redis</span><span class="sTag2">Aggregation</span><span class="sTag2">Indexing</span></div></div>
+    <div class="sCard"><div class="sCatLabel">Cloud & DevOps</div><div class="sTags"><span class="sTag2">AWS EC2/S3/RDS</span><span class="sTag2">Google Cloud</span><span class="sTag2">Docker</span><span class="sTag2">Jenkins CI/CD</span><span class="sTag2">Nginx</span><span class="sTag2">PM2</span><span class="sTag2">Linux VPS</span></div></div>
+    <div class="sCard"><div class="sCatLabel">Distributed & IoT</div><div class="sTags"><span class="sTag2">Spring Cloud</span><span class="sTag2">Netflix Eureka</span><span class="sTag2">Apache Kafka</span><span class="sTag2">ESP32/ESP8266</span><span class="sTag2">HiveMQ MQTT</span><span class="sTag2">WebSocket</span><span class="sTag2">RFID</span></div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ EXPERIENCE ═══════════════════ -->
+<div class="wrap reveal" id="experience">
+  <div style="margin-bottom:3rem">
+    <div class="sTag">03 // MISSION_LOG</div>
+    <h2 class="sTitle">Experience <em>Timeline</em></h2>
+    <div class="sDash"></div>
+  </div>
+  <div class="expTimeline">
+
+    <!-- GolokaIT -->
+    <div class="expItem">
+      <div class="expCard">
+        <div class="expHead">
+          <div>
+            <div class="expRole">BACKEND DEVELOPER INTERN</div>
+            <div class="expCo">GolokaIT &nbsp;·&nbsp; Internship &nbsp;·&nbsp; <a href="https://fundforbharat.com" target="_blank">fundforbharat.com ↗</a></div>
+          </div>
+          <div class="expBadges">
+            <span class="badgeActive">ACTIVE</span>
+            <span class="badgePeriod">DEC 2025 – PRESENT</span>
+          </div>
+        </div>
+        <div class="expMetrics">
+          <div class="mCell"><div class="mVal">105+</div><div class="mLbl">Git Commits</div></div>
+          <div class="mCell"><div class="mVal">30%<span style="color:var(--green);font-size:.8rem">↓</span></div><div class="mLbl">Payment Failures</div></div>
+          <div class="mCell"><div class="mVal">40%<span style="color:var(--green);font-size:.8rem">↑</span></div><div class="mLbl">API Speed</div></div>
+        </div>
+        <ul class="expBullets">
+          <li>Currently working as a Backend Developer Intern — focusing on <strong>Spring Boot, React, Spring Security, and full-stack development</strong>.</li>
+          <li>Architected <strong>FundForBharat</strong> (fundforbharat.com) — production crowdfunding platform using Spring Boot microservices, Hibernate ORM, React.js, MySQL; processing live Razorpay transactions for real users.</li>
+          <li>Contributed <strong>105+ commits</strong> across client frontend (59), admin panel (13), and backend API (33); built core features and secure REST endpoints end-to-end.</li>
+          <li>Engineered <strong>25+ RESTful APIs</strong> with Bean Validation & structured exception handling; Razorpay payment gateway integration — reduced payment failures by <strong>30%</strong>.</li>
+          <li>Implemented <strong>Spring Security + JWT + RBAC + BCrypt</strong>; optimized MySQL with indexing & lazy loading — response time <strong>500ms → 300ms</strong>; <strong>99.9% uptime</strong> on Linux VPS via Jenkins CI/CD, Nginx, PM2.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ATJOIN -->
+    <div class="expItem">
+      <div class="expCard">
+        <div class="expHead">
+          <div>
+            <div class="expRole">ANDROID APPLICATION DEVELOPER</div>
+            <div class="expCo">ATJOIN Pvt. Ltd &nbsp;·&nbsp; Internship</div>
+          </div>
+          <span class="badgePeriod">JUNE 2023</span>
+        </div>
+        <ul class="expBullets">
+          <li>Developed and maintained Android applications using <strong>Java + Android SDK</strong>.</li>
+          <li>Strengthened mobile development workflow — hands-on debugging, testing and feature delivery cycles.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CodeClause -->
+    <div class="expItem">
+      <div class="expCard">
+        <div class="expHead">
+          <div>
+            <div class="expRole">WEB DEVELOPMENT INTERN</div>
+            <div class="expCo">CodeClause &nbsp;·&nbsp; Internship</div>
+          </div>
+          <span class="badgePeriod">APRIL 2023</span>
+        </div>
+        <ul class="expBullets">
+          <li>End-to-end web development across frontend and backend using <strong>HTML, CSS, JavaScript</strong>.</li>
+          <li>Collaborated on team projects with agile workflows, code reviews, and delivery pipelines.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BeyonDegree -->
+    <div class="expItem">
+      <div class="expCard">
+        <div class="expHead">
+          <div>
+            <div class="expRole">ML FOUNDATIONS INTERN</div>
+            <div class="expCo">BeyonDegree Pvt. Ltd &nbsp;·&nbsp; Internship</div>
+          </div>
+          <span class="badgePeriod">MAY 2022</span>
+        </div>
+        <ul class="expBullets">
+          <li>Foundations of Machine Learning with <strong>Python — NumPy, Pandas, Matplotlib</strong> and core ML concepts & techniques.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════ PROJECTS ═══════════════════ -->
+<div class="wrap reveal" id="projects">
+  <div style="margin-bottom:2rem">
+    <div class="sTag">04 // DEPLOYED_SYSTEMS</div>
+    <h2 class="sTitle">Project <em>Showcase</em></h2>
+    <div class="sDash"></div>
+  </div>
+  <div class="pfBar">
+    <button class="pfBtn on" data-f="all">ALL</button>
+    <button class="pfBtn" data-f="personal">PERSONAL</button>
+    <button class="pfBtn" data-f="client">CLIENT</button>
+    <button class="pfBtn" data-f="hackathon">HACKATHON</button>
+    <button class="pfBtn" data-f="opensource">OPEN SOURCE</button>
+  </div>
+  <div class="projGrid" id="pGrid">
+
+    <!-- FundForBharat -->
+    <div class="pCard gold" data-c="client">
+      <div class="pCardId">PRJ_001</div>
+      <div class="pBadgeRow"><div class="pTitle">FundForBharat</div><span class="badge bLive">LIVE</span><span class="badge bClient">CLIENT</span></div>
+      <div class="pDesc">Production crowdfunding platform built & deployed on Hostinger VPS using nohup, PM2 and Nginx. Developed during internship at GolokaIT. Serves real users with live Razorpay payment processing.</div>
+      <div class="pFeats">
+        <div class="pFeat">25+ REST APIs, JWT + RBAC security layer</div>
+        <div class="pFeat">99.9% uptime · Jenkins CI/CD · SSL/TLS</div>
+        <div class="pFeat">500ms → 300ms API response optimization</div>
+      </div>
+      <div class="pStack"><span class="pTag">Spring Boot</span><span class="pTag">React</span><span class="pTag">Spring Security</span><span class="pTag">Hostinger VPS</span><span class="pTag">Nginx</span><span class="pTag">PM2</span><span class="pTag">MySQL</span></div>
+      <div class="pLinks"><a href="https://fundforbharat.com" target="_blank" class="pLink">DEMO ↗</a></div>
+    </div>
+
+    <!-- MaitriConnect -->
+    <div class="pCard" data-c="personal">
+      <div class="pCardId">PRJ_002</div>
+      <div class="pBadgeRow"><div class="pTitle">MaitriConnect</div><span class="badge bClient" style="color:rgba(0,255,225,.7);background:rgba(0,255,225,.07);border-color:rgba(0,255,225,.22)">PERSONAL</span></div>
+      <div class="pDesc">Microservices real-time chat app: 5+ independent Spring Boot services, Netflix Eureka discovery, API Gateway, WebSocket for 200+ concurrent users, file sharing up to 10MB, sub-100ms latency. OAuth2 via Google & GitHub.</div>
+      <div class="pFeats">
+        <div class="pFeat">200+ concurrent WebSocket users</div>
+        <div class="pFeat">OAuth2 Google + GitHub login</div>
+        <div class="pFeat">Fully Dockerized · &lt;100ms latency</div>
+      </div>
+      <div class="pStack"><span class="pTag">Spring Cloud</span><span class="pTag">Netflix Eureka</span><span class="pTag">WebSocket</span><span class="pTag">Docker</span><span class="pTag">OAuth2</span><span class="pTag">JWT</span></div>
+    </div>
+
+    <!-- Mentee Connect -->
+    <div class="pCard" data-c="personal">
+      <div class="pCardId">PRJ_003</div>
+      <div class="pTitle">Mentee Connect</div>
+      <div class="pDesc">Platform connecting students with mentors for personalized guidance, progress tracking and communication. RBAC for Admin, Mentor, Student roles. 50+ REST APIs with pagination, sorting & filtering. React.js UI scored 95+ on Google Lighthouse.</div>
+      <div class="pFeats">
+        <div class="pFeat">50+ REST APIs built</div>
+        <div class="pFeat">50% MongoDB query improvement</div>
+        <div class="pFeat">Google Lighthouse 95+ score</div>
+      </div>
+      <div class="pStack"><span class="pTag">Spring Boot</span><span class="pTag">Spring Security</span><span class="pTag">MongoDB</span><span class="pTag">React.js</span><span class="pTag">Tailwind CSS</span><span class="pTag">JWT</span></div>
+      <div class="pLinks"><a href="#" class="pLink">CODE ↗</a><a href="#" class="pLink">DEMO ↗</a></div>
+    </div>
+
+    <!-- SafePilot -->
+    <div class="pCard" data-c="personal">
+      <div class="pCardId">PRJ_004</div>
+      <div class="pBadgeRow"><div class="pTitle">SafePilot</div><span class="badge bIot">IoT</span></div>
+      <div class="pDesc">IoT-driven smart-vehicle safety system: ESP8266 edge hardware, HiveMQ MQTT, RFID-based door auth, Python drowsiness detection (OpenCV), WebSocket-powered React dashboard for real-time vehicle control, alerts and object detection.</div>
+      <div class="pFeats">
+        <div class="pFeat">MQ-3 alcohol, RFID, GPS, heart-rate sensors</div>
+        <div class="pFeat">Python OpenCV drowsiness detection</div>
+        <div class="pFeat">Ignition lock + emergency alert system</div>
+      </div>
+      <div class="pStack"><span class="pTag">ESP8266</span><span class="pTag">RFID</span><span class="pTag">MQTT (HiveMQ)</span><span class="pTag">WebSocket</span><span class="pTag">Python (OpenCV)</span><span class="pTag">React</span><span class="pTag">Node.js</span><span class="pTag">Appwrite</span></div>
+      <div class="pLinks"><a href="#" class="pLink">CODE ↗</a></div>
+    </div>
+
+    <!-- CodeComplexity.AI -->
+    <div class="pCard" data-c="personal">
+      <div class="pCardId">PRJ_005</div>
+      <div class="pTitle">CodeComplexity.AI</div>
+      <div class="pDesc">AI-powered tool that analyzes source code to evaluate complexity, maintainability and provide improvement suggestions. Gemini API backend, React.js frontend, Node.js server.</div>
+      <div class="pFeats">
+        <div class="pFeat">Gemini AI static analysis engine</div>
+        <div class="pFeat">Maintainability scoring & fix suggestions</div>
+        <div class="pFeat">Multi-language support</div>
+      </div>
+      <div class="pStack"><span class="pTag">React.js</span><span class="pTag">Node.js</span><span class="pTag">Gemini API</span></div>
+      <div class="pLinks"><a href="#" class="pLink">CODE ↗</a><a href="#" class="pLink">DEMO ↗</a></div>
+    </div>
+
+    <!-- Smart Waste Bin -->
+    <div class="pCard" data-c="personal">
+      <div class="pCardId">PRJ_006</div>
+      <div class="pBadgeRow"><div class="pTitle">Smart Waste Bin</div><span class="badge bIot">IoT</span></div>
+      <div class="pDesc">IoT-powered bin with fill-level detection, moisture-based dry/wet segregation, automatic lid control and real-time alerts via web dashboard. Research published in MAT Journals Vol. 2, Issue 2, 2025.</div>
+      <div class="pFeats">
+        <div class="pFeat">MAT Journals 2025 — peer reviewed</div>
+        <div class="pFeat">Firebase Realtime DB cloud sync</div>
+        <div class="pFeat">EmailJS + Nodemailer alert system</div>
+      </div>
+      <div class="pStack"><span class="pTag">IoT</span><span class="pTag">Node.js</span><span class="pTag">Firebase Realtime DB</span><span class="pTag">EmailJS</span><span class="pTag">Nodemailer</span></div>
+      <div class="pLinks"><a href="#" class="pLink">CODE ↗</a><a href="#" class="pLink">DEMO ↗</a></div>
+    </div>
+
+    <!-- StreetSupply -->
+    <div class="pCard gold" data-c="hackathon">
+      <div class="pCardId">PRJ_007</div>
+      <div class="pBadgeRow"><div class="pTitle">StreetSupply</div><span class="badge bHack">🏆 TOP 10 FINALIST</span></div>
+      <div class="pDesc">Hackathon project for street food sellers — raw material procurement with location-based vendor display, supplier-vendor-admin dashboards and Razorpay payment integration. MERN + Redis + Docker + ShadCN UI.</div>
+      <div class="pFeats">
+        <div class="pFeat">Top 10 Finalist · 48-hour build</div>
+        <div class="pFeat">Redis caching + Docker deployment</div>
+        <div class="pFeat">Full Razorpay payment pipeline</div>
+      </div>
+      <div class="pStack"><span class="pTag">MongoDB</span><span class="pTag">Express.js</span><span class="pTag">React.js</span><span class="pTag">Node.js</span><span class="pTag">Redis</span><span class="pTag">Docker</span><span class="pTag">ShadCN UI</span></div>
+      <div class="pLinks"><a href="#" class="pLink">CODE ↗</a><a href="#" class="pLink">DEMO ↗</a></div>
+    </div>
+
+    <!-- NeonQuiz -->
+    <div class="pCard" data-c="hackathon">
+      <div class="pCardId">PRJ_008</div>
+      <div class="pBadgeRow"><div class="pTitle">NeonQuiz Application</div><span class="badge bHack">🏆 BEST UI/UX</span></div>
+      <div class="pDesc">Hackathon quiz app with Open Trivia DB API — user-selected categories, difficulty levels, scorecard, result breakdown and negative marking. Won Best UI/UX award.</div>
+      <div class="pFeats">
+        <div class="pFeat">Best UI/UX Hackathon Award</div>
+        <div class="pFeat">Dynamic Open Trivia DB integration</div>
+        <div class="pFeat">Negative marking + result analytics</div>
+      </div>
+      <div class="pStack"><span class="pTag">HTML</span><span class="pTag">CSS</span><span class="pTag">JavaScript</span><span class="pTag">Open Trivia DB API</span></div>
+      <div class="pLinks"><a href="#" class="pLink">CODE ↗</a><a href="#" class="pLink">DEMO ↗</a></div>
+    </div>
+
+    <!-- Portfolio 3.0 -->
+    <div class="pCard" data-c="hackathon">
+      <div class="pCardId">PRJ_009</div>
+      <div class="pBadgeRow"><div class="pTitle">Portfolio 3.0</div><span class="badge bHack">🏆 TOP 3</span></div>
+      <div class="pDesc">Hackathon project — modern developer portfolio built with Next.js, TypeScript, Tailwind CSS and ShadCN UI, featuring responsive design, dynamic project sections and smooth animations. Placed Top 3.</div>
+      <div class="pStack"><span class="pTag">Next.js</span><span class="pTag">TypeScript</span><span class="pTag">Tailwind CSS</span><span class="pTag">ShadCN UI</span></div>
+      <div class="pLinks"><a href="#" class="pLink">CODE ↗</a><a href="#" class="pLink">DEMO ↗</a></div>
+    </div>
+
+    <!-- ms-ui-kit -->
+    <div class="pCard gold" data-c="opensource">
+      <div class="pCardId">PRJ_010</div>
+      <div class="pBadgeRow"><div class="pTitle">ms-ui-kit</div><span class="badge bNpm">npm PUBLIC</span><span class="badge bOss">OPEN SOURCE</span></div>
+      <div class="pDesc">Published React component library on npm — 23+ production-ready, tree-shakeable components: Button, Modal, Navbar, Accordion, Pagination, Tooltip, Stepper, Timeline, Avatar, Badge, Spinner and more. MIT License.</div>
+      <div class="pFeats">
+        <div class="pFeat">23+ independently importable components</div>
+        <div class="pFeat">Tree-shakeable · MIT License · Vite build</div>
+        <div class="pFeat">npmjs.com/package/ms-ui-kit</div>
+      </div>
+      <div class="pStack"><span class="pTag">React.js</span><span class="pTag">Vite</span><span class="pTag">Tailwind CSS</span><span class="pTag">npm</span></div>
+      <div class="pLinks"><a href="https://npmjs.com/package/ms-ui-kit" target="_blank" class="pLink">npm ↗</a></div>
+    </div>
+
+    <!-- Sanjivani Blood Bank -->
+    <div class="pCard" data-c="client">
+      <div class="pCardId">PRJ_011</div>
+      <div class="pBadgeRow"><div class="pTitle">Sanjivani Blood Bank</div><span class="badge bClient">CLIENT</span></div>
+      <div class="pDesc">Web-based blood bank management: donor records, blood stock, request processing with barcode-based registration, donor classification and camp management. Currently under development.</div>
+      <div class="pFeats">
+        <div class="pFeat">Barcode-based donor registration</div>
+        <div class="pFeat">Blood stock & camp management</div>
+        <div class="pFeat">Redux Toolkit state management</div>
+      </div>
+      <div class="pStack"><span class="pTag">MERN Stack</span><span class="pTag">Redux Toolkit</span><span class="pTag">Tailwind CSS</span><span class="pTag">Redis</span></div>
+      <div class="pLinks"><a href="#" class="pLink">DEMO ↗</a></div>
+    </div>
+
+    <!-- Hotel Dhanlakshmi -->
+    <div class="pCard" data-c="client">
+      <div class="pCardId">PRJ_012</div>
+      <div class="pBadgeRow"><div class="pTitle">Hotel Dhanlakshmi</div><span class="badge bClient">CLIENT</span></div>
+      <div class="pDesc">Comprehensive hotel management system: room bookings, guest check-ins, payments, staff operations, real-time availability tracking, admin dashboard, customer reservation portal. Under development.</div>
+      <div class="pFeats">
+        <div class="pFeat">Real-time room availability tracking</div>
+        <div class="pFeat">Admin + customer portals</div>
+        <div class="pFeat">MERN full-stack architecture</div>
+      </div>
+      <div class="pStack"><span class="pTag">React (Vite)</span><span class="pTag">Tailwind CSS</span><span class="pTag">MongoDB</span><span class="pTag">MERN Stack</span></div>
+      <div class="pLinks"><a href="#" class="pLink">DEMO ↗</a></div>
+    </div>
+
+    <!-- Learn With Samarth -->
+    <div class="pCard" data-c="client">
+      <div class="pCardId">PRJ_013</div>
+      <div class="pBadgeRow"><div class="pTitle">Learn With Samarth</div><span class="badge bClient">CLIENT</span></div>
+      <div class="pDesc">MERN-based platform built for an influencer to showcase courses, coding notes, PDFs and related documents in a clean and organized way.</div>
+      <div class="pStack"><span class="pTag">React.js</span><span class="pTag">Node.js</span><span class="pTag">Express.js</span><span class="pTag">MongoDB</span><span class="pTag">JWT</span><span class="pTag">BCrypt</span></div>
+    </div>
+
+    <!-- Smart Energy Portal -->
+    <div class="pCard" data-c="client">
+      <div class="pCardId">PRJ_014</div>
+      <div class="pBadgeRow"><div class="pTitle">Smart Energy Portal</div><span class="badge bClient">CLIENT</span></div>
+      <div class="pDesc">Comprehensive energy management system: track, analyze and optimize electricity consumption. Admin dashboard with system-wide analytics and user-level insights.</div>
+      <div class="pFeats">
+        <div class="pFeat">Real-time consumption tracking</div>
+        <div class="pFeat">Admin system-wide analytics</div>
+        <div class="pFeat">JWT + BCrypt auth</div>
+      </div>
+      <div class="pStack"><span class="pTag">React.js</span><span class="pTag">Node.js</span><span class="pTag">Express.js</span><span class="pTag">MongoDB</span><span class="pTag">JWT</span><span class="pTag">BCrypt</span></div>
+      <div class="pLinks"><a href="#" class="pLink">CODE ↗</a><a href="#" class="pLink">DEMO ↗</a></div>
+    </div>
+
+    <!-- Mini Instagram Clone -->
+    <div class="pCard" data-c="personal">
+      <div class="pCardId">PRJ_015</div>
+      <div class="pTitle">Mini Fullstack Instagram Clone</div>
+      <div class="pDesc">Fullstack Instagram clone: profiles, posts, follow/unfollow, comments with real-time Firebase updates.</div>
+      <div class="pStack"><span class="pTag">React.js</span><span class="pTag">Firebase</span><span class="pTag">Tailwind CSS</span></div>
+      <div class="pLinks"><a href="#" class="pLink">CODE ↗</a><a href="#" class="pLink">DEMO ↗</a></div>
+    </div>
+
+    <!-- Student Mentoring App -->
+    <div class="pCard" data-c="personal">
+      <div class="pCardId">PRJ_016</div>
+      <div class="pTitle">Student Mentoring App</div>
+      <div class="pDesc">Android app connecting students with mentors: progress tracking, communication features. Built natively with Java, XML, Android SDK and PhpMyAdmin backend.</div>
+      <div class="pStack"><span class="pTag">Android</span><span class="pTag">Java</span><span class="pTag">XML</span><span class="pTag">PhpMyAdmin</span></div>
+      <div class="pLinks"><a href="#" class="pLink">CODE ↗</a></div>
+    </div>
+
+    <!-- TaskTracker -->
+    <div class="pCard" data-c="personal">
+      <div class="pCardId">PRJ_017</div>
+      <div class="pTitle">TaskTracker</div>
+      <div class="pDesc">Task management web app with lists, priorities, progress tracking, task report generation and a task calendar with reminders.</div>
+      <div class="pStack"><span class="pTag">React.js</span><span class="pTag">Express.js</span><span class="pTag">Node.js</span><span class="pTag">MongoDB</span></div>
+      <div class="pLinks"><a href="#" class="pLink">CODE ↗</a></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════ RESEARCH ═══════════════════ -->
+<div class="wrap reveal" id="research">
+  <div style="margin-bottom:3rem">
+    <div class="sTag">05 // RESEARCH_OUTPUT</div>
+    <h2 class="sTitle">Published <em>Research</em></h2>
+    <div class="sDash"></div>
+  </div>
+  <div class="resCard">
+    <div class="resTitle">IoT-Based Smart Waste Bin with Real-Time Fill-Level Monitoring</div>
+    <div class="resJournal">// Journal of Data Engineering & Knowledge Discovery · Vol. 2 · Issue 2 · 2025 · MAT Journals Pvt. Ltd.</div>
+    <div class="resDesc">Proposed an IoT sensor-based waste management system for real-time bin fill-level monitoring, enabling automated waste collection and supporting smart city infrastructure development. Demonstrated real-time data transmission pipelines from IoT edge sensors to cloud dashboards, showcasing practical application for urban smart infrastructure and environmental management.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CERTIFICATIONS ═══════════════════ -->
+<div class="wrap reveal" id="certs">
+  <div style="margin-bottom:3rem">
+    <div class="sTag">06 // CREDENTIALS_DB</div>
+    <h2 class="sTitle">Certs & <em>Achievements</em></h2>
+    <div class="sDash"></div>
+  </div>
+  <div class="certGrid">
+    <div class="certCard"><div class="certScan"></div><div class="certNum">37+</div><div class="certTitle">Google Cloud Skills</div><div class="certSub">// 37 Skill Boost Badges · GCP</div></div>
+    <div class="certCard"><div class="certScan"></div><div class="certNum">8+</div><div class="certTitle">AWS Educate</div><div class="certSub">// EC2 · S3 · RDS · Lambda · VPC</div></div>
+    <div class="certCard"><div class="certScan"></div><div class="certNum" style="color:var(--amber)">298+</div><div class="certTitle">LeetCode Solved</div><div class="certSub">// 644+ submissions · 100-day streak 2025</div></div>
+    <div class="certCard"><div class="certScan"></div><div class="certNum" style="color:var(--amber)">50+100</div><div class="certTitle">LeetCode Streaks</div><div class="certSub">// 50-day 2024 · 100-day 2025</div></div>
+    <div class="certCard"><div class="certScan"></div><div class="certNum" style="color:var(--green)">5★</div><div class="certTitle">HackerRank Gold</div><div class="certSub">// Java Basics · React Basics Certified</div></div>
+    <div class="certCard"><div class="certScan"></div><div class="certNum" style="color:var(--pink)">BEST</div><div class="certTitle">NeonQuiz Best UI/UX</div><div class="certSub">// Hackathon Award Winner</div></div>
+    <div class="certCard"><div class="certScan"></div><div class="certNum" style="color:var(--amber)">TOP 10</div><div class="certTitle">StreetSupply Finalist</div><div class="certSub">// 48-hour Hackathon · Top 10</div></div>
+    <div class="certCard"><div class="certScan"></div><div class="certNum" style="color:#c084fc">TOP 3</div><div class="certTitle">Portfolio 3.0</div><div class="certSub">// Hackathon · Top 3 Placement</div></div>
+    <div class="certCard"><div class="certScan"></div><div class="certNum" style="color:var(--c2)">6W</div><div class="certTitle">GFG Full Stack</div><div class="certSub">// 6-Week Bootcamp · GeeksforGeeks</div></div>
+    <div class="certCard"><div class="certScan"></div><div class="certNum" style="color:var(--c1)">UX</div><div class="certTitle">UX Design Foundations</div><div class="certSub">// Coursera Certified</div></div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div style="margin-top:4.5rem">
+    <div class="hudDiv">
+      <div class="hudDiv-l"></div>
+      <span>07 // EDUCATION_RECORDS</span>
+      <div class="hudDiv-r"></div>
+    </div>
+    <div class="eduTimeline">
+      <div class="eduItem">
+        <div class="eduYear">EXPECTED_2027</div>
+        <div class="eduDeg">B.TECH · COMPUTER ENGINEERING</div>
+        <div class="eduSch">Savitribai Phule Pune University (SPPU)</div>
+        <span class="eduGrade">CGPA: 8.32 / 10</span>
+      </div>
+      <div class="eduItem">
+        <div class="eduYear">2024</div>
+        <div class="eduDeg">DIPLOMA · COMPUTER TECHNOLOGY</div>
+        <div class="eduSch">Maharashtra State Board of Technical Education (MSBTE)</div>
+        <span class="eduGrade">SCORE: 91.37%</span>
+      </div>
+      <div class="eduItem">
+        <div class="eduYear">2021</div>
+        <div class="eduDeg">SECONDARY SCHOOL CERTIFICATE (SSC)</div>
+        <div class="eduSch">Maharashtra State Board (MSB)</div>
+        <span class="eduGrade">SCORE: 89.40%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<div class="wrap reveal" id="contact">
+  <div style="margin-bottom:2.5rem">
+    <div class="sTag">08 // COMMS_CHANNEL</div>
+    <h2 class="sTitle">Let's <em>Connect</em></h2>
+    <div class="sDash"></div>
+  </div>
+  <div class="contactIntro">
+    ACTIVELY_SEEKING :: Backend · Full-Stack · Android · Software Engineering internship & full-time roles.<br>
+    Open to MNCs, innovative startups, and product companies. Reach out for collaborations, opportunities, or just to say hello.
+  </div>
+  <div class="contactGrid">
+    <a href="mailto:maheshshinde9100@gmail.com" class="cCard">
+      <div class="cIcon">✉</div>
+      <div><div class="cLabel">PRIMARY EMAIL</div><div class="cVal">maheshshinde9100@gmail.com</div></div>
+    </a>
+    <a href="mailto:contact.shindemahesh2112@gmail.com" class="cCard">
+      <div class="cIcon">✉</div>
+      <div><div class="cLabel">ALT EMAIL</div><div class="cVal">contact.shindemahesh2112@gmail.com</div></div>
+    </a>
+    <a href="tel:+919529544681" class="cCard">
+      <div class="cIcon">✆</div>
+      <div><div class="cLabel">PHONE</div><div class="cVal">+91 9529544681</div></div>
+    </a>
+    <a href="https://github.com/maheshshinde9100" target="_blank" class="cCard">
+      <div class="cIcon" style="font-size:.7rem">&lt;/&gt;</div>
+      <div><div class="cLabel">GITHUB</div><div class="cVal">maheshshinde9100</div></div>
+    </a>
+    <a href="https://linkedin.com/in/maheshshinde9100" target="_blank" class="cCard">
+      <div class="cIcon" style="font-family:var(--fH);font-size:.65rem">LI</div>
+      <div><div class="cLabel">LINKEDIN</div><div class="cVal">maheshshinde9100</div></div>
+    </a>
+    <a href="https://maheshshinde-dev.vercel.app" target="_blank" class="cCard">
+      <div class="cIcon">⌘</div>
+      <div><div class="cLabel">PORTFOLIO</div><div class="cVal">maheshshinde-dev.vercel.app</div></div>
+    </a>
+  </div>
+  <div class="socialRow" style="margin-top:1px">
+    <a href="https://github.com/maheshshinde9100" target="_blank" class="socLink">GITHUB</a>
+    <a href="https://linkedin.com/in/maheshshinde9100" target="_blank" class="socLink">LINKEDIN</a>
+    <a href="#" class="socLink">INSTAGRAM</a>
+    <a href="https://leetcode.com/u/maheshshinde9100" target="_blank" class="socLink">LEETCODE</a>
+    <a href="https://maheshshinde-dev.vercel.app" target="_blank" class="socLink">PORTFOLIO ↗</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ftName">MAHESH_SHINDE</div>
+  <div class="ftSub">// BACKEND_ENGINEER · FULL_STACK · ANDROID_DEV · IOT_RESEARCHER · OSS_CONTRIBUTOR · NPM_AUTHOR</div>
+  <div class="ftLinks">
+    <a href="mailto:maheshshinde9100@gmail.com" class="ftLink">EMAIL</a>
+    <a href="https://github.com/maheshshinde9100" target="_blank" class="ftLink">GITHUB</a>
+    <a href="https://linkedin.com/in/maheshshinde9100" target="_blank" class="ftLink">LINKEDIN</a>
+    <a href="https://maheshshinde-dev.vercel.app" target="_blank" class="ftLink">PORTFOLIO</a>
+    <a href="https://npmjs.com/package/ms-ui-kit" target="_blank" class="ftLink">npm</a>
+  </div>
+  <div class="ftCopy">NASHIK · MAHARASHTRA · INDIA // BUILD_VERSION_2025.COMPLETE</div>
+</footer>
+
+<!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+<script>
+// ── CURSOR ──
+const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
+let mx=0,my=0,r2x=0,r2y=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function anim(){r2x+=(mx-r2x)*.1;r2y+=(my-r2y)*.1;cur2.style.left=r2x+'px';cur2.style.top=r2y+'px';requestAnimationFrame(anim)})();
+document.querySelectorAll('a,button,.pCard,.sCard,.certCard').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';cur2.style.width='52px';cur2.style.height='52px';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='12px';cur.style.height='12px';cur2.style.width='36px';cur2.style.height='36px';});
+});
+
+// ── MATRIX RAIN ──
+const mc=document.getElementById('cMatrix'),ctx=mc.getContext('2d');
+function rsz(){mc.width=window.innerWidth;mc.height=window.innerHeight;}rsz();
+window.addEventListener('resize',rsz);
+const chars='アイウエオカキクケコサシスセソタチツ01テトナニヌ10ネノハヒフ01ヘホマミ10ムメモヤユヨラリルレロワヲン0110';
+let drops=[];
+function initDrops(){drops=Array(Math.floor(mc.width/16)).fill(1);}initDrops();
+window.addEventListener('resize',initDrops);
+setInterval(()=>{
+  ctx.fillStyle='rgba(0,0,8,.055)';ctx.fillRect(0,0,mc.width,mc.height);
+  ctx.fillStyle='#00ffe1';ctx.font='12px Share Tech Mono';
+  drops.forEach((y,i)=>{ctx.fillText(chars[Math.floor(Math.random()*chars.length)],i*16,y*16);if(y*16>mc.height&&Math.random()>.978)drops[i]=0;drops[i]++;});
+},60);
+
+// ── NOISE ──
+const nc=document.getElementById('cNoise'),nctx=nc.getContext('2d');
+function genNoise(){
+  nc.width=window.innerWidth;nc.height=window.innerHeight;
+  const id=nctx.createImageData(nc.width,nc.height);
+  for(let i=0;i<id.data.length;i+=4){const v=Math.random()*255;id.data[i]=v;id.data[i+1]=v;id.data[i+2]=v;id.data[i+3]=20;}
+  nctx.putImageData(id,0,0);
+}
+genNoise();setInterval(genNoise,120);
+
+// ── CLOCK ──
+const nTime=document.getElementById('nTime');
+function tick(){const n=new Date();nTime.textContent=n.toLocaleTimeString('en-GB',{hour12:false})+' IST';}
+tick();setInterval(tick,1000);
+
+// ── NAV STATUS CYCLE ──
+const nMsg=document.getElementById('nMsg');
+const msgs=['SYS_ONLINE','READY','OPEN_TO_HIRE','BUILD_MODE','AVAILABLE','ALL_SYSTEMS_GO'];let si=0;
+setInterval(()=>{si=(si+1)%msgs.length;let i=0;nMsg.textContent='';
+  const t=setInterval(()=>{nMsg.textContent+=msgs[si][i]||'';i++;if(i>msgs[si].length)clearInterval(t);},50);
+},4500);
+
+// ── SCROLL REVEAL ──
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.classList.add('show');
+    // skill bars
+    e.target.querySelectorAll('.sBarFill').forEach(b=>{setTimeout(()=>{b.style.width=b.dataset.w+'%';},300);});
+    // exp items stagger
+    e.target.querySelectorAll('.expItem').forEach((el,i)=>{setTimeout(()=>el.classList.add('show'),i*140);});
+    // card stagger
+    e.target.querySelectorAll('.sCard,.pCard,.certCard').forEach((el,i)=>{
+      el.style.opacity='0';el.style.transform='translateY(14px)';
+      setTimeout(()=>{el.style.transition='opacity .45s ease,transform .45s ease';el.style.opacity='1';el.style.transform='translateY(0)';},40+i*50);
+    });
+  });
+},{threshold:.04,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── COUNTER ANIMATION ──
+const hObs=new IntersectionObserver(ent=>{
+  ent.forEach(e=>{
+    if(!e.isIntersecting)return;
+    document.querySelectorAll('.hSNum[data-t]').forEach(el=>{
+      const target=parseInt(el.dataset.t);let c=0;const step=target/60;
+      const t=setInterval(()=>{c=Math.min(c+step,target);el.innerHTML=Math.floor(c)+'<span style="color:var(--c2);font-size:.8rem">+</span>';if(c>=target)clearInterval(t);},16);
+    });hObs.disconnect();
+  });
+},{threshold:.5});
+hObs.observe(document.getElementById('hero'));
+
+// ── PROJECT FILTER ──
+document.querySelectorAll('.pfBtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.pfBtn').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    const f=btn.dataset.f;
+    document.querySelectorAll('.pCard').forEach(c=>{
+      c.classList.toggle('hide',f!=='all'&&c.dataset.c!==f);
+    });
+  });
+});
+
+// ── SKILL BARS RESPONSIVE ──
+const sbg=document.querySelector('.skillBarsGrid');
+function setSBG(){if(sbg)sbg.style.gridTemplateColumns=window.innerWidth<768?'1fr':'1fr 1fr';}
+setSBG();window.addEventListener('resize',setSBG);
+
+// ── ACTIVE NAV HIGHLIGHT ──
+const sections=document.querySelectorAll('section,div[id]');
+const nLinks=document.querySelectorAll('.nLinks a');
+window.addEventListener('scroll',()=>{
+  let cur2='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-80)cur2=s.id;});
+  nLinks.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur2?'var(--c1)':'';});
+},{ passive:true });
+</script>
+</body>
+</html>
